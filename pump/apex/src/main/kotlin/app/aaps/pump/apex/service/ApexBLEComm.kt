@@ -6,7 +6,6 @@ import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
 import app.aaps.core.interfaces.rx.AapsSchedulers
 import app.aaps.core.interfaces.rx.bus.RxBus
-import app.aaps.pump.danars.encryption.BleEncryption
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 import javax.inject.Inject
@@ -17,8 +16,7 @@ class ApexBLEComm @Inject constructor(
     private val aapsLogger: AAPSLogger,
     private val aapsSchedulers: AapsSchedulers,
     private val rxBus: RxBus,
-    private val context: Context,
-    private val bleEncryption: BleEncryption
+    private val context: Context
 ) {
 
     var isConnected = false
@@ -43,17 +41,14 @@ class ApexBLEComm @Inject constructor(
         isConnecting = false
     }
 
-    @SuppressLint("MissingPermission")
     fun disconnect(from: String) {
         aapsLogger.debug(LTag.PUMPCOMM, "ApexBLEComm.disconnect called from: $from")
         isConnecting = false
         isConnected = false
-        bleEncryption.connectionState = 0
     }
 
     fun sendMessage(opCode: Int, data: ByteArray?) {
-        val encrypted = bleEncryption.getEncryptedPacket(opCode, data, deviceName)
-        aapsLogger.debug(LTag.PUMPCOMM, "Sending encrypted message for opCode: $opCode")
+        aapsLogger.debug(LTag.PUMPCOMM, "Sending message for opCode: $opCode")
     }
 
     fun setDeviceName(name: String) {

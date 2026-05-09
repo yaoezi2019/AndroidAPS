@@ -25,6 +25,7 @@ dependencies {
 
     implementation(project(":pump:common"))
     implementation(project(":pump:dana"))
+    implementation(project(":pump:danars"))
 
     testImplementation(project(":shared:tests"))
     testImplementation(project(":core:objects"))

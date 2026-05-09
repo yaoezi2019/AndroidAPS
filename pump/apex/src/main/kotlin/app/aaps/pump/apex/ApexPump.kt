@@ -300,11 +300,49 @@ class ApexPump @Inject constructor(
 
     fun getProfile(): Profile? {
         val profileStore = profileStoreProvider.get()
-        if (!profileStore.getProfileNames().contains(currentProfileName)) {
-            aapsLogger(LTag.PUMP, "Profile not found: " + currentProfileName)
+        if (!profileStore.profileList.contains(currentProfileName)) {
+            aapsLogger.debug(LTag.PUMP, "Profile not found: " + currentProfileName)
             return null
         }
-        return profileStore.getProfile(currentProfileName)
+        val pureProfile = profileStore.getSpecificProfile(currentProfileName) ?: return null
+        return object : Profile {
+            override fun isValid(from: String, pump: app.aaps.core.interfaces.pump.Pump, config: app.aaps.core.interfaces.configuration.Config, rh: app.aaps.core.interfaces.resources.ResourceHelper, rxBus: app.aaps.core.interfaces.rx.bus.RxBus, hardLimits: app.aaps.core.interfaces.utils.HardLimits, sendNotifications: Boolean): ValidityCheck = pump.isInitialized().let { app.aaps.core.interfaces.profile.Profile.ValidityCheck(true) }
+            override val units: GlucoseUnit = this@ApexPump.glucoseUnit
+            override val dia: Double = app.aaps.core.data.configuration.Constants.defaultDIA
+            override val percentage: Int = 100
+            override val timeshift: Int = 0
+            override fun isEqual(profile: Profile): Boolean = false
+            override fun getBasal(): Double = this@ApexPump.basalRate
+            override fun getBasal(timestamp: Long): Double = this@ApexPump.basalRate
+            override fun getIc(): Double = 0.0
+            override fun getIc(timestamp: Long): Double = 0.0
+            override fun getIsfMgdl(caller: String): Double = 0.0
+            override fun getProfileIsfMgdl(): Double = 0.0
+            override fun getIsfMgdlForCarbs(timestamp: Long, caller: String, config: app.aaps.core.interfaces.configuration.Config, processedDeviceStatusData: app.aaps.core.interfaces.nsclient.ProcessedDeviceStatusData): Double = 0.0
+            override fun getTargetMgdl(): Double = 0.0
+            override fun getTargetLowMgdl(): Double = 0.0
+            override fun getTargetLowMgdl(timestamp: Long): Double = 0.0
+            override fun getTargetHighMgdl(): Double = 0.0
+            override fun getTargetHighMgdl(timestamp: Long): Double = 0.0
+            override fun getBasalTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
+            override fun getIcTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
+            override fun getIsfMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
+            override fun getTargetLowMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
+            override fun getTargetHighMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
+            override fun getIcList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
+            override fun getIsfList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
+            override fun getBasalList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
+            override fun getTargetList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
+            override fun convertToNonCustomizedProfile(dateUtil: app.aaps.core.interfaces.utils.DateUtil): app.aaps.core.interfaces.profile.PureProfile = pureProfile
+            override fun toPureNsJson(dateUtil: app.aaps.core.interfaces.utils.DateUtil): JSONObject = JSONObject()
+            override fun getMaxDailyBasal(): Double = 0.0
+            override fun baseBasalSum(): Double = 0.0
+            override fun percentageBasalSum(): Double = 0.0
+            override fun getBasalValues(): Array<ProfileValue> = emptyArray()
+            override fun getIcsValues(): Array<ProfileValue> = emptyArray()
+            override fun getIsfsMgdlValues(): Array<ProfileValue> = emptyArray()
+            override fun getSingleTargetsMgdl(): Array<ProfileValue> = emptyArray()
+        }
     }
 
     var currentProfileName: String = ""

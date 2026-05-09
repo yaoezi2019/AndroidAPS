@@ -18,6 +18,7 @@ import app.aaps.core.interfaces.pump.Pump
 import app.aaps.core.interfaces.pump.PumpEnactResult
 import app.aaps.core.interfaces.pump.PumpPluginBase
 import app.aaps.core.interfaces.pump.PumpSync
+import app.aaps.pump.apex.ApexPump
 import app.aaps.core.interfaces.queue.CommandQueue
 import app.aaps.core.interfaces.resources.ResourceHelper
 import app.aaps.core.interfaces.rx.AapsSchedulers
@@ -192,4 +193,15 @@ class ApexPlugin @Inject constructor(
         result.success(true)
         return result
     }
+
+    override fun loadTDDs(): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        result.success(true)
+        return result
+    }
+
+    override fun canHandleDST(): Boolean = true
+
+    override val isFakingTempsByExtendedBoluses: Boolean
+        get() = false
 }

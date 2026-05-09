@@ -135,11 +135,11 @@ class ApexService : DaggerService() {
                 if (System.currentTimeMillis() > lastApproachingDailyLimit + 30 * 60 * 1000) {
                     uiInteraction.addNotification(Notification.APPROACHING_DAILY_LIMIT, rh.gs(R.string.approachingdailylimit), Notification.URGENT)
                     pumpSync.insertAnnouncement(
-                        rh.gs(R.string.approachingdailylimit) + ": ${apexPump.dailyUnits}/${apexPump.maxBasal}U",
-                        null,
-                        apexPlugin.pumpType,
-                        apexPump.serialNumber
-                    )
+                    rh.gs(R.string.approachingdailylimit) + ": ${apexPump.dailyUnits}/${apexPump.maxBasal}U",
+                    null,
+                    app.aaps.core.data.pump.defs.PumpType.APEX,
+                    apexPump.serialNumber
+                )
                     lastApproachingDailyLimit = System.currentTimeMillis()
                 }
             }

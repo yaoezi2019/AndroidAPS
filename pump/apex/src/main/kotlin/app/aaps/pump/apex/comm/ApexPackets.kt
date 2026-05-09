@@ -1,12 +1,10 @@
 package app.aaps.pump.apex.comm
 
-import app.aaps.pump.apex.comm.ApexMessageHashTable.Companion.*
-
 class ApexPacketGeneralGetPumpCheck : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_GENERAL__GET_PUMP_CHECK and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x01
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -27,8 +25,8 @@ class ApexPacketGeneralGetPumpCheck : ApexPacket() {
 class ApexPacketGeneralGetShippingInformation : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_GENERAL__GET_SHIPPING_INFORMATION and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x02
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -49,8 +47,8 @@ class ApexPacketGeneralGetShippingInformation : ApexPacket() {
 class ApexPacketGeneralInitialScreenInformation : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_GENERAL__INITIAL_SCREEN_INFORMATION and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x03
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -71,8 +69,8 @@ class ApexPacketGeneralInitialScreenInformation : ApexPacket() {
 class ApexPacketBasalGetBasalRate : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BASAL__GET_BASAL_RATE and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x01
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -93,8 +91,8 @@ class ApexPacketBasalGetBasalRate : ApexPacket() {
 class ApexPacketBasalGetProfileNumber : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BASAL__GET_PROFILE_NUMBER and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x02
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -118,8 +116,8 @@ class ApexPacketBasalSetTemporaryBasal : ApexPacket() {
     var tempBasalDuration: Int = 0
 
     init {
-        opCode = APEX_PACKET__TYPE_BASAL__SET_TEMPORARY_BASAL and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x05
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -152,8 +150,8 @@ class ApexPacketBasalSetTemporaryBasal : ApexPacket() {
 class ApexPacketBasalCancelTemporaryBasal : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BASAL__CANCEL_TEMPORARY_BASAL and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x06
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -174,8 +172,8 @@ class ApexPacketBasalCancelTemporaryBasal : ApexPacket() {
 class ApexPacketBolusGetStepBolusInformation : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BOLUS__GET_STEP_BOLUS_INFORMATION and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x01
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -198,8 +196,8 @@ class ApexPacketBolusSetStepBolusStart : ApexPacket() {
     var insulin: Double = 0.0
 
     init {
-        opCode = APEX_PACKET__TYPE_BOLUS__SET_STEP_BOLUS_START and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x02
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -229,8 +227,8 @@ class ApexPacketBolusSetStepBolusStart : ApexPacket() {
 class ApexPacketBolusSetStepBolusStop : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BOLUS__SET_STEP_BOLUS_STOP and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x03
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -254,8 +252,8 @@ class ApexPacketBolusSetExtendedBolus : ApexPacket() {
     var duration: Int = 0
 
     init {
-        opCode = APEX_PACKET__TYPE_BOLUS__SET_EXTENDED_BOLUS and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x04
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -287,8 +285,8 @@ class ApexPacketBolusSetExtendedBolus : ApexPacket() {
 class ApexPacketBolusSetExtendedBolusCancel : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_BOLUS__SET_EXTENDED_BOLUS_CANCEL and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x05
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -309,8 +307,8 @@ class ApexPacketBolusSetExtendedBolusCancel : ApexPacket() {
 class ApexPacketOptionGetPumpTime : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_OPTION__GET_PUMP_TIME and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x01
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -333,8 +331,8 @@ class ApexPacketOptionSetPumpTime : ApexPacket() {
     var time: Long = 0
 
     init {
-        opCode = APEX_PACKET__TYPE_OPTION__SET_PUMP_TIME and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x02
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -360,8 +358,8 @@ class ApexPacketOptionSetPumpTime : ApexPacket() {
 class ApexPacketOptionGetUserOption : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_OPTION__GET_USER_OPTION and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x05
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -382,8 +380,8 @@ class ApexPacketOptionGetUserOption : ApexPacket() {
 class ApexPacketOptionSetUserOption : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_OPTION__SET_USER_OPTION and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x06
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -404,8 +402,8 @@ class ApexPacketOptionSetUserOption : ApexPacket() {
 class ApexPacketHistoryAllHistory : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__ALL_HISTORY and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x01
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -426,8 +424,8 @@ class ApexPacketHistoryAllHistory : ApexPacket() {
 class ApexPacketHistoryAlarm : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__ALARM and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x02
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -448,8 +446,8 @@ class ApexPacketHistoryAlarm : ApexPacket() {
 class ApexPacketHistoryBasal : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__BASAL and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x03
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -470,8 +468,8 @@ class ApexPacketHistoryBasal : ApexPacket() {
 class ApexPacketHistoryBolus : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__BOLUS and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x04
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -492,8 +490,8 @@ class ApexPacketHistoryBolus : ApexPacket() {
 class ApexPacketHistoryCarbohydrate : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__CARBOHYDRATE and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x05
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -514,8 +512,8 @@ class ApexPacketHistoryCarbohydrate : ApexPacket() {
 class ApexPacketHistoryDaily : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__DAILY and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x06
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -536,8 +534,8 @@ class ApexPacketHistoryDaily : ApexPacket() {
 class ApexPacketHistoryRefill : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__REFILL and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x07
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {
@@ -558,8 +556,8 @@ class ApexPacketHistoryRefill : ApexPacket() {
 class ApexPacketHistorySuspend : ApexPacket() {
 
     init {
-        opCode = APEX_PACKET__TYPE_HISTORY__SUSPEND and 0xFF
-        type = APEX_PACKET__TYPE_COMMAND
+        opCode = 0x08
+        type = 0x03
     }
 
     override fun getRequestParams(): ByteArray {

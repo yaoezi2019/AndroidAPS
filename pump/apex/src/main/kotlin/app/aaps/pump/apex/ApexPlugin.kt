@@ -1,22 +1,20 @@
 package app.aaps.pump.apex
 
 import android.content.Context
-import android.os.Build
-import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
-import androidx.preference.PreferenceManager
-import androidx.preference.PreferenceScreen
+import android.os.Handler
+import android.os.HandlerThread
+import androidx.fragment.app.Fragment
 import app.aaps.core.data.plugin.PluginType
 import app.aaps.core.data.pump.defs.ManufacturerType
 import app.aaps.core.data.pump.defs.PumpDescription
 import app.aaps.core.data.pump.defs.PumpType
-import app.aaps.core.data.time.T
 import app.aaps.core.interfaces.constraints.Constraint
 import app.aaps.core.interfaces.constraints.ConstraintsChecker
 import app.aaps.core.interfaces.constraints.PluginConstraints
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
 import app.aaps.core.interfaces.notifications.Notification
+import app.aaps.core.interfaces.plugin.ActivePlugin
 import app.aaps.core.interfaces.plugin.OwnDatabasePlugin
 import app.aaps.core.interfaces.plugin.PluginDescription
 import app.aaps.core.interfaces.profile.Profile
@@ -36,15 +34,11 @@ import app.aaps.core.interfaces.rx.AapsSchedulers
 import app.aaps.core.interfaces.rx.bus.RxBus
 import app.aaps.core.interfaces.rx.events.EventAppExit
 import app.aaps.core.interfaces.rx.events.EventConfigBuilderChange
-import app.aaps.core.interfaces.rx.events.EventDismissNotification
 import app.aaps.core.interfaces.ui.UiInteraction
 import app.aaps.core.interfaces.utils.DateUtil
 import app.aaps.core.interfaces.utils.DecimalFormatter
-import app.aaps.core.interfaces.utils.Round
-import app.aaps.core.interfaces.utils.fabric.FabricPrivacy
 import app.aaps.core.keys.interfaces.Preferences
 import app.aaps.core.objects.constraints.ConstraintObject
-import app.aaps.core.ui.toast.ToastUtils
 import app.aaps.pump.apex.service.ApexService
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
@@ -52,7 +46,6 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.math.abs
-import kotlin.math.max
 
 @Singleton
 class ApexPlugin @Inject constructor(
@@ -69,138 +62,126 @@ class ApexPlugin @Inject constructor(
     private val pumpSync: PumpSync,
     private val detailedBolusInfoStorage: DetailedBolusInfoStorage,
     private val temporaryBasalStorage: TemporaryBasalStorage,
-    private val fabricPrivacy: FabricPrivacy,
     private val dateUtil: DateUtil,
     private val uiInteraction: UiInteraction,
     private val decimalFormatter: DecimalFormatter,
     private val pumpEnactResultProvider: Provider<PumpEnactResult>
 ) : PumpPluginBase(
-    PluginDescription()
+    pluginDescription = PluginDescription()
         .mainType(PluginType.PUMP)
-        .pluginName(R.string.apex_pump)
-        .shortName(R.string.apex_pump_shortname)
-        .description(R.string.apex_pump_description)
-        .setDefault(),
-    aapsLogger, rh, commandQueue
+        .pluginName(app.aaps.pump.apex.R.string.apex_pump)
+        .shortName(app.aaps.pump.apex.R.string.apex_pump_shortname)
+        .preferencesId(PluginDescription.PREFERENCE_SCREEN)
+        .description(app.aaps.pump.apex.R.string.apex_pump_description),
+    ownPreferences = emptyList(),
+    aapsLogger = aapsLogger,
+    rh = rh,
+    preferences = preferences,
+    commandQueue = commandQueue
 ), Pump, PluginConstraints, OwnDatabasePlugin {
 
     override val pumpType: PumpType = PumpType.APEX
 
     private val disposable = CompositeDisposable()
     private var apexService: ApexService? = null
+    private var handler: Handler? = null
 
     val service: ApexService?
         get() = apexService
 
-    override fun onInitialize() {
+    override fun onStart() {
+        super.onStart()
+        disposable += rxBus
+            .toObservable(EventConfigBuilderChange::class.java)
+            .observeOn(aapsSchedulers.io)
+            .subscribe { apexPump.reset() }
+
         disposable += rxBus
             .toObservable(EventAppExit::class.java)
             .observeOn(aapsSchedulers.io)
-            .subscribe({ stopProcessing() }, fabricPrivacy::logException)
-        super.onInitialize()
+            .subscribe({ context.unbindService(connection) }, { throwable -> aapsLogger.error("Error on exit", throwable) })
+
+        handler = Handler(HandlerThread(this::class.java.simpleName + "Handler").also { it.start() }.looper)
     }
 
     override fun onStop() {
-        disposable.clear()
         super.onStop()
+        disposable.clear()
+        handler?.removeCallbacksAndMessages(null)
+        handler?.looper?.quit()
+        handler = null
     }
 
-    private fun stopProcessing() {
-        rxBus.send(EventDismissNotification(Notification.APPROACHING_DAILY_LIMIT))
+    private val connection = object : android.content.ServiceConnection {
+        override fun onServiceDisconnected(name: android.content.ComponentName?) {
+            aapsLogger.debug(LTag.PUMP, "Service is disconnected")
+            apexService = null
+        }
+
+        override fun onServiceConnected(name: android.content.ComponentName?, service: android.os.IBinder?) {
+            aapsLogger.debug(LTag.PUMP, "Service is connected")
+            val mLocalBinder = service as ApexService.LocalBinder
+            apexService = mLocalBinder.serviceInstance
+        }
     }
 
-    fun setService(service: ApexService?) {
-        apexService = service
+    override fun isInitialized(): Boolean = apexPump.lastConnection > 0
+
+    override fun isSuspended(): Boolean = apexPump.pumpSuspended
+
+    override fun isBusy(): Boolean = false
+
+    override fun setNewBasalProfile(profile: Profile): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        if (apexService == null) {
+            aapsLogger.error("setNewBasalProfile apexService is null")
+            result.comment("setNewBasalProfile apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("setNewBasalProfile not initialized")
+            result.comment("setNewBasalProfile not initialized")
+            return result
+        }
+        result.success(true)
+        return result
     }
-
-    override fun isInitialized(): Boolean = true
-
-    override fun isConnected(): Boolean = apexService?.isConnected == true
-
-    override fun isConnecting(): Boolean = apexService?.isConnecting == true
-
-    override fun connect(reason: String): Boolean {
-        return apexService?.connect(reason, "") == true
-    }
-
-    override fun disconnect(reason: String) {
-        apexService?.disconnect(reason)
-    }
-
-    override fun stopConnecting() {
-        apexService?.stopConnecting()
-    }
-
-    override fun getPumpStatus(): String {
-        return apexService?.getPumpStatus() ?: "Not connected"
-    }
-
-    override fun uploadPumpEvents() {}
 
     override fun isThisProfileSet(profile: Profile): Boolean {
+        if (!isInitialized()) return true
         return true
     }
 
-    override fun setProfile(profile: Profile): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(true)
-    }
+    override fun getBaseBasalRate(): Double = apexPump.basalRate
 
-    override fun doConfigurePreferences(screen: PreferenceScreen) {
-        super.doConfigurePreferences(screen)
-    }
+    override fun getBasalProfile(): List<Profile> = emptyList()
 
-    override fun preprocessPreferences(screen: PreferenceScreen) {
-        val context = screen.context
-    }
-
-    override fun getPreferencesSummary(): String {
-        return "APEX Pump"
-    }
-
-    override fun canHandleDST(): Boolean = true
-
-    override fun getPumpDescription(): PumpDescription {
-        return PumpDescription().fillFor(PumpType.APEX)
-    }
-
-    override fun getFriendlyName(): String = "APEX"
-
-    override fun getMaxBasal(): Double = apexPump.maxBasal
-
-    override fun getMaxBolus(): Double = apexPump.maxBolus
-
-    override fun getPumpUnit(): String = if (apexPump.glucoseUnit.asMgdL) "mg/dL" else "mmol/L"
-
-    override fun setTempBasalPercent(percent: Int, durationInMinutes: Int, profile: Profile, tbrType: Pump.EnactTRBTBRType, startFrom: Long): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
-
-    override fun setTempBasalAbsolute(rate: Double, durationInMinutes: Int, profile: Profile, tbrType: Pump.EnactTRBTBRType, startFrom: Long): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
-
-    override fun cancelTempBasal(reason: String): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
-
-    override fun setExtendedBolus(insulin: Double, durationInMinutes: Int, profile: Profile, type: Pump.EnactType): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
-
-    override fun cancelExtendedBolus(): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
-
-    override fun bolus(detailedBolusInfo: DetailedBolusInfo, id: Long): PumpEnactResult {
-        if (!isConnected) {
-            return pumpEnactResultProvider.get().success(false).comment("Not connected")
+    override fun deliverBolus(detailedBolusInfo: DetailedBolusInfo): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        if (apexService == null) {
+            result.success(false).comment("apexService is null")
+            return result
         }
-        detailedBolusInfo.insulin.let { insulin ->
-            if (insulin > 0 && constraintChecker.hasViolation(Constraint(detailedBolusInfo.insulin, "Bolus insulin constraint"))) {
-                return pumpEnactResultProvider.get().success(false).comment("Bolus blocked by constraint")
+        if (detailedBolusInfo.isSMB == DetailedBolusInfo.SMBShortcutType.BOLUS) {
+            val constraintsResult = constraintChecker.applyBolusConstraints(detailedBolusInfo)
+            if (!constraintsResult.accepted) {
+                result.success(false).comment(constraintsResult.getMostLimitedReasonsList().toString())
+                return result
             }
         }
-        val result = pumpEnactResultProvider.get().success(apexService?.bolus(detailedBolusInfo) == true)
+        val bolusSuccess = apexService?.bolus(detailedBolusInfo) == true
+        result.success(bolusSuccess)
+        if (bolusSuccess) {
+            pumpSync.syncBolusWithTimestamp(
+                detailedBolusInfo.timestamp,
+                detailedBolusInfo.amount,
+                detailedBolusInfo.duration,
+                detailedBolusInfo.bolusType,
+                detailedBolusInfo.carbs,
+                detailedBolusInfo.provert,
+                null
+            )
+        }
         return result
     }
 
@@ -209,38 +190,29 @@ class ApexPlugin @Inject constructor(
         return pumpEnactResultProvider.get().success(true)
     }
 
-    override fun getBolusProgress(): Double {
-        return BolusProgressData.Progress
-    }
+    override fun getBolusProgress(): Double = BolusProgressData.Progress
 
-    override fun isBolusRunning(): Boolean {
-        return false
-    }
+    override fun isBolusRunning(): Boolean = false
 
     override fun getTemperatureGauge(): String? = null
 
-    override fun getReservoirLevel(): Double {
-        return apexPump.remainingInsulin
-    }
+    override fun getReservoirLevel(): Double = apexPump.remainingInsulin
 
-    override fun getBatteryLevel(): Int {
-        return apexPump.batteryRemaining
-    }
+    override fun getBatteryLevel(): Int = apexPump.batteryRemaining
 
     override fun getInsertionReminder(): Int = 0
 
     override fun getInsulinExpirationNotification(): Notification? = null
 
-    override fun loadEventsFromHistory(): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
-    }
+    override fun loadEventsFromHistory(): PumpEnactResult = pumpEnactResultProvider.get().success(false)
 
     override fun setPumpTime(time: Long): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(false)
+        val result = pumpEnactResultProvider.get()
+        result.success(false)
+        return result
     }
 
-    override fun updateBatteryStatus(batteryType: Pump.BatteryType?, useFixedFirmwareReporting: Boolean) {
-    }
+    override fun updateBatteryStatus(batteryType: Pump.BatteryType?, useFixedFirmwareReporting: Boolean) {}
 
     override fun smartEntryRefused(): String? = null
 
@@ -284,64 +256,85 @@ class ApexPlugin @Inject constructor(
 
     override fun getModel(): String = "APEX"
 
-    override fun getSerialNumber(): String = apexPump.serialNumber
-
     override fun isInitialized(): Boolean = apexPump.lastConnection > 0
 
-    override fun setFragmentId(fragmentId: Int) {}
+    override fun getMaxBasal(): Double = apexPump.maxBasal
 
-    override fun getFragmentId(): Int = 0
+    override fun getMaxBolus(): Double = apexPump.maxBolus
 
-    override fun getType(): PluginType = PluginType.PUMP
+    override fun getBolusDuration(): Int = apexPump.bolusDuration
 
-    override fun getName(): Int = R.string.apex_pump
+    override fun getTbrBasalDuration(): Int = apexPump.tbrDuration
 
-    override fun getNameShort(): String = "APEX"
+    override fun isLowReservoirWarningEnabled(): Boolean = true
 
-    override fun getPreferences(): ResourceHelper? = null
+    override fun getLowReservoirWarningThreshold(): Int = 20
 
-    override fun getDescription(): Int = R.string.apex_pump_description
+    override fun getTotalDailyUnits(): Double = apexPump.dailyUnits
 
-    override fun isEnabled(type: PluginType): Boolean = type == PluginType.PUMP
+    override fun getReservoirAlertThreshold(): Int = 50
 
-    override fun isVisibleInList(type: PluginType): Boolean = type == PluginType.PUMP
+    override fun getBolusReminder(): Notification? = null
 
-    override fun specialEnableCondition(type: PluginType): Boolean = true
+    override fun getMissedBolusReminder(): Notification? = null
 
-    override fun specialVisibilityCondition(type: PluginType): Boolean = true
+    override fun getMissedBolusArchivingReminder(): Notification? = null
 
-    override fun onConnected() {}
+    override fun getDateTimeOrNull(): Long? = null
 
-    override fun onDisconnected() {}
+    override fun setTBROverstep(report: Boolean) {}
 
-    override fun preprocess(options: Map<String, Any?>?) {}
+    override fun getTBRHighTemp(): Notification? = null
 
-    override fun handleConfigBuilder(event: EventConfigBuilderChange) {}
+    override fun getTBRLowTemp(): Notification? = null
 
-    override fun hasFragment(): Boolean = false
+    override fun getTBRFullDuration(): Notification? = null
 
-    override fun getFragment(): androidx.fragment.app.Fragment? = null
-
-    override fun getMaxDailyTotalUnits(): Double = apexPump.maxBasal * 24
-
-    override fun isLimitedByReservoir(): Boolean {
-        return apexPump.remainingInsulin < 20
-    }
-
-    override fun isDeliveringBolus(): Boolean {
-        return apexService?.isConnected == true && apexPump.bolusingDetailedBolusInfo != null
-    }
+    override fun isBatteryChangeEncryptionEnabled(): Boolean = false
 
     override fun getDailyUnitsSetting(): Double = apexPump.dailyUnits
 
     override fun getDailyUnitsMax(): Double = apexPump.maxBasal * 24
 
-    override fun loadTDDsFromPump(): PumpEnactResult {
-        return pumpEnactResultProvider.get().success(true)
+    override fun getMaxDailyTotalUnits(): Double = apexPump.maxBasal * 24
+
+    override fun isLimitedByReservoir(): Boolean = apexPump.remainingInsulin < 20
+
+    override fun isDeliveringBolus(): Boolean = apexService?.isConnected == true && detailedBolusInfoStorage.getDetailedBolusInfo() != null
+
+    override fun loadTDDsFromPump(): PumpEnactResult = pumpEnactResultProvider.get().success(true)
+
+    override fun getFragment(): Fragment? = null
+
+    override fun hasFragment(): Boolean = false
+
+    override fun specialEnableCondition(): Boolean = true
+
+    override fun specialVisibilityCondition(): Boolean = true
+
+    override fun preprocess(options: Map<String, Any?>?) {}
+
+    override fun handleConfigBuilder(event: EventConfigBuilderChange) {}
+
+    override fun onConnected() {}
+
+    override fun onDisconnected() {}
+
+    override fun applyBasalConstraints(profile: Profile, allConstraints: ConstraintObject): Constraint<Double> {
+        return ConstraintObject(apexPump.maxBasal, aapsLogger, dateUtil)
     }
 
-    var bolusingDetailedBolusInfo: DetailedBolusInfo? = null
-        private set
+    override fun applyBolusConstraints(bolus: DetailedBolusInfo): Constraint<Double> {
+        return ConstraintObject(apexPump.maxBolus, aapsLogger, dateUtil)
+    }
+
+    override fun applyExtendedBolusConstraints(extendedBolus: DetailedBolusInfo): Constraint<Double> {
+        return ConstraintObject(apexPump.maxBolus, aapsLogger, dateUtil)
+    }
+
+    override fun applyTempBasalConstraints(tempBasal: DetailedBolusInfo): Constraint<Double> {
+        return ConstraintObject(apexPump.maxBasal, aapsLogger, dateUtil)
+    }
 
     companion object {
         const val FRAGMENT_TAG = "ApexPlugin"

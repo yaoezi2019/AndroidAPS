@@ -6,7 +6,6 @@ import android.os.Binder
 import android.os.IBinder
 import android.os.SystemClock
 import app.aaps.core.data.configuration.Constants
-import app.aaps.core.data.time.T
 import app.aaps.core.interfaces.constraints.ConstraintsChecker
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
@@ -36,14 +35,10 @@ import app.aaps.core.keys.interfaces.Preferences
 import app.aaps.pump.apex.ApexPlugin
 import app.aaps.pump.apex.ApexPump
 import app.aaps.pump.apex.comm.ApexPacket
-import app.aaps.pump.dana.DanaPump
 import app.aaps.pump.dana.R
-import app.aaps.pump.danars.encryption.BleEncryption
 import dagger.android.DaggerService
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
-import org.joda.time.DateTime
-import org.joda.time.DateTimeZone
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Provider
@@ -107,7 +102,7 @@ class ApexService : DaggerService() {
     }
 
     fun sendMessage(message: ApexPacket) {
-        bleComm.sendMessage(message)
+        bleComm.sendMessage(message.opCode, message.getRequestParams())
     }
 
     fun readPumpStatus() {
@@ -142,7 +137,7 @@ class ApexService : DaggerService() {
                     pumpSync.insertAnnouncement(
                         rh.gs(R.string.approachingdailylimit) + ": ${apexPump.dailyUnits}/${apexPump.maxBasal}U",
                         null,
-                        apexPump.pumpType(),
+                        apexPlugin.pumpType,
                         apexPump.serialNumber
                     )
                     lastApproachingDailyLimit = System.currentTimeMillis()
@@ -198,11 +193,6 @@ class ApexService : DaggerService() {
     }
 
     inner class LocalBinder : Binder() {
-        val service: ApexService
-            get() = this@ApexService
-    }
-
-    companion object {
-        const val FRAGMENT_TAG = "ApexService"
+        fun getService(): ApexService = this@ApexService
     }
 }

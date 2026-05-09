@@ -6,23 +6,14 @@ import app.aaps.core.data.pump.defs.PumpType
 import app.aaps.core.data.time.T
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
-import app.aaps.core.interfaces.profile.Profile
-import app.aaps.core.interfaces.profile.ProfileStore
-import app.aaps.core.interfaces.pump.DetailedBolusInfo
-import app.aaps.core.interfaces.pump.PumpSync
+import app.aaps.core.keys.interfaces.Preferences
 import app.aaps.core.interfaces.utils.DateUtil
 import app.aaps.core.interfaces.utils.DecimalFormatter
-import app.aaps.core.keys.interfaces.Preferences
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 import java.security.InvalidParameterException
-import java.text.DecimalFormat
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.math.max
 import kotlin.math.min
@@ -34,8 +25,7 @@ class ApexPump @Inject constructor(
     private val aapsLogger: AAPSLogger,
     private val preferences: Preferences,
     private val dateUtil: DateUtil,
-    private val decimalFormatter: DecimalFormatter,
-    private val profileStoreProvider: Provider<ProfileStore>
+    private val decimalFormatter: DecimalFormatter
 ) {
 
     enum class ErrorState(val code: Int) {
@@ -107,7 +97,6 @@ class ApexPump @Inject constructor(
     var dailyUnitsReserved = 0.0
 
     var activeProfile = 0
-    var profileNames: Array<String> = arrayOf()
 
     var isExtendedBolusRunning = false
     var extendedBolus = 0.0
@@ -296,64 +285,5 @@ class ApexPump @Inject constructor(
             record.data = data.copyOfRange(11, data.size)
         }
         return record
-    }
-
-    fun getProfile(): Profile? {
-        val profileStore = profileStoreProvider.get()
-        if (!profileStore.profileList.contains(currentProfileName)) {
-            aapsLogger.debug(LTag.PUMP, "Profile not found: " + currentProfileName)
-            return null
-        }
-        val pureProfile = profileStore.getSpecificProfile(currentProfileName) ?: return null
-        return object : Profile {
-            override fun isValid(from: String, pump: app.aaps.core.interfaces.pump.Pump, config: app.aaps.core.interfaces.configuration.Config, rh: app.aaps.core.interfaces.resources.ResourceHelper, rxBus: app.aaps.core.interfaces.rx.bus.RxBus, hardLimits: app.aaps.core.interfaces.utils.HardLimits, sendNotifications: Boolean): ValidityCheck = pump.isInitialized().let { app.aaps.core.interfaces.profile.Profile.ValidityCheck(true) }
-            override val units: GlucoseUnit = this@ApexPump.glucoseUnit
-            override val dia: Double = app.aaps.core.data.configuration.Constants.defaultDIA
-            override val percentage: Int = 100
-            override val timeshift: Int = 0
-            override fun isEqual(profile: Profile): Boolean = false
-            override fun getBasal(): Double = this@ApexPump.basalRate
-            override fun getBasal(timestamp: Long): Double = this@ApexPump.basalRate
-            override fun getIc(): Double = 0.0
-            override fun getIc(timestamp: Long): Double = 0.0
-            override fun getIsfMgdl(caller: String): Double = 0.0
-            override fun getProfileIsfMgdl(): Double = 0.0
-            override fun getIsfMgdlForCarbs(timestamp: Long, caller: String, config: app.aaps.core.interfaces.configuration.Config, processedDeviceStatusData: app.aaps.core.interfaces.nsclient.ProcessedDeviceStatusData): Double = 0.0
-            override fun getTargetMgdl(): Double = 0.0
-            override fun getTargetLowMgdl(): Double = 0.0
-            override fun getTargetLowMgdl(timestamp: Long): Double = 0.0
-            override fun getTargetHighMgdl(): Double = 0.0
-            override fun getTargetHighMgdl(timestamp: Long): Double = 0.0
-            override fun getBasalTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
-            override fun getIcTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
-            override fun getIsfMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
-            override fun getTargetLowMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
-            override fun getTargetHighMgdlTimeFromMidnight(timeAsSeconds: Int): Double = 0.0
-            override fun getIcList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
-            override fun getIsfList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
-            override fun getBasalList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
-            override fun getTargetList(rh: app.aaps.core.interfaces.resources.ResourceHelper, dateUtil: app.aaps.core.interfaces.utils.DateUtil): String = ""
-            override fun convertToNonCustomizedProfile(dateUtil: app.aaps.core.interfaces.utils.DateUtil): app.aaps.core.interfaces.profile.PureProfile = pureProfile
-            override fun toPureNsJson(dateUtil: app.aaps.core.interfaces.utils.DateUtil): JSONObject = JSONObject()
-            override fun getMaxDailyBasal(): Double = 0.0
-            override fun baseBasalSum(): Double = 0.0
-            override fun percentageBasalSum(): Double = 0.0
-            override fun getBasalValues(): Array<ProfileValue> = emptyArray()
-            override fun getIcsValues(): Array<ProfileValue> = emptyArray()
-            override fun getIsfsMgdlValues(): Array<ProfileValue> = emptyArray()
-            override fun getSingleTargetsMgdl(): Array<ProfileValue> = emptyArray()
-        }
-    }
-
-    var currentProfileName: String = ""
-        get() {
-            return when (activeProfile) {
-                0 -> Constants.profileNoBS
-                else -> if (activeProfile - 1 < profileNames.size) profileNames[activeProfile - 1] else Constants.profileNoBS
-            }
-        }
-
-    fun setProfiles(profiles: Array<String>) {
-        profileNames = profiles
     }
 }

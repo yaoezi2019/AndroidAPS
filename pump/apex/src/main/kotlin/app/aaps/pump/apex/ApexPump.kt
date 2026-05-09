@@ -53,6 +53,10 @@ class ApexPump @Inject constructor(
     var bleModel = ""
     var isNewPump = true
     var password = -1
+    var ignoreUserPassword = false
+    var rsPassword = ""
+    val isRSPasswordOK: Boolean
+        get() = rsPassword != "" && rsPassword == Integer.toHexString(password)
 
     var pumpTime: Long = 0
     var zoneOffset: Int = 0

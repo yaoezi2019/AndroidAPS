@@ -1,6 +1,6 @@
 package app.aaps.pump.apex.comm
 
-import app.aaps.pump.danars.encryption.BleEncryption
+import app.aaps.pump.apex.encryption.BleEncryption
 import org.joda.time.DateTime
 import org.joda.time.IllegalInstantException
 import java.nio.charset.StandardCharsets
@@ -137,8 +137,47 @@ open class ApexPacket() {
 
     companion object {
 
-        const val TYPE_START = 3
-        const val OPCODE_START = 4
-        const val DATA_START = 5
+        const val TYPE_START = 0
+        const val OPCODE_START = 1
+        const val DATA_START = 2
+
+        fun asciiStringFromBuff(buff: ByteArray, offset: Int, length: Int): String {
+            val stringBuff = ByteArray(length)
+            System.arraycopy(buff, offset, stringBuff, 0, length)
+            return String(stringBuff, StandardCharsets.UTF_8)
+        }
+
+        fun toHexString(buff: ByteArray?): String {
+            if (buff == null) return "null"
+            val sb = StringBuilder()
+            for ((count, element) in buff.withIndex()) {
+                sb.append(String.format("%02X ", element))
+                if ((count + 1) % 4 == 0) sb.append(" ")
+            }
+            return sb.toString()
+        }
+
+        private val hexArray = "0123456789ABCDEF".toCharArray()
+        fun bytesToHex(bytes: ByteArray): String {
+            val hexChars = CharArray(bytes.size * 2)
+            for (j in bytes.indices) {
+                val v: Int = bytes[j].toInt() and 0xFF
+                hexChars[j * 2] = hexArray[v ushr 4]
+                hexChars[j * 2 + 1] = hexArray[v and 0x0F]
+            }
+            return String(hexChars)
+        }
+
+        fun hexToBytes(s: String): ByteArray {
+            val len = s.length
+            val data = ByteArray(len / 2)
+            var i = 0
+            while (i < len) {
+                data[i / 2] = ((Character.digit(s[i], 16) shl 4)
+                    + Character.digit(s[i + 1], 16)).toByte()
+                i += 2
+            }
+            return data
+        }
     }
 }

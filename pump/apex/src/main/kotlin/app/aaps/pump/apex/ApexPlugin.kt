@@ -204,4 +204,8 @@ class ApexPlugin @Inject constructor(
 
     override val isFakingTempsByExtendedBoluses: Boolean
         get() = false
+
+    override fun clearPairing() {
+        aapsLogger.debug(LTag.PUMPCOMM, "Pairing keys cleared")
+    }
 }

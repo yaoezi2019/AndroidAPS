@@ -1,6 +1,6 @@
 package app.aaps.pump.apex.comm
 
-import app.aaps.pump.apex.comm.ApexMessageHashTable.*
+import app.aaps.pump.apex.comm.ApexMessageHashTable.Companion.*
 
 class ApexPacketGeneralGetPumpCheck : ApexPacket() {
 

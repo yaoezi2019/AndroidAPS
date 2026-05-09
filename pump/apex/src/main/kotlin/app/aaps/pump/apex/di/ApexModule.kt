@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoSet
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module(

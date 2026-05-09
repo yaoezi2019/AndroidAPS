@@ -150,8 +150,8 @@ class ApexPlugin @Inject constructor(
     override val batteryLevel: Int?
         get() = apexPump.batteryRemaining
 
-    override fun manufacturer(): ManufacturerType = ManufacturerType.APEX
-    override fun model(): PumpType = PumpType.APEX
+    override fun manufacturer(): ManufacturerType = app.aaps.core.data.pump.defs.ManufacturerType.Apex
+    override fun model(): app.aaps.core.data.pump.defs.PumpType = app.aaps.core.data.pump.defs.PumpType.APEX
     override fun serialNumber(): String = apexPump.serialNumber
 
     override fun deliverTreatment(detailedBolusInfo: DetailedBolusInfo): PumpEnactResult {

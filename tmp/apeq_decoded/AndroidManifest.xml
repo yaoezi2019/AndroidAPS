@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="31" android:compileSdkVersionCodename="12" package="info.nightscout.androidaps" platformBuildVersionCode="31" platformBuildVersionName="12">
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SEND_MMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.google.android.permission.PROVIDE_BACKGROUND"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.dexcom.cgm.EXTERNAL_PERMISSION"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission-sdk-23 android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="com.eveningoutpost.dexdrip.permissions.RECEIVE_BG_ESTIMATE"/>
+    <uses-permission android:name="com.microtechmd.cgms.aidex.permissions.RECEIVE_BG_ESTIMATE"/>
+    <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:backupAgent="info.nightscout.androidaps.utils.SPBackupAgent" android:extractNativeLibs="false" android:fullBackupOnly="false" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="info.nightscout.androidaps.MainApp" android:restoreAnyVersion="true" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme.Launcher">
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.widget.WidgetConfigureActivity" android:theme="@android:style/Theme.Material.Dialog.NoActionBar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="true" android:name="info.nightscout.androidaps.widget.Widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info"/>
+        </receiver>
+        <meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAI3JiApyMrbP2QFzZ2fYfCPsgjkRp53Dm2S1-zPQ"/>
+        <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
+        <activity android:exported="true" android:name="info.nightscout.androidaps.auth.AuthorizedActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="info.nightscout.androidaps.MainActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.PreferencesActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.general.overview.activities.QuickWizardListActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.general.overview.activities.QuickWizardListActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.general.maintenance.activities.PrefImportListActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.HistoryBrowseActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.TreatmentsActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.SurveyActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.ProfileHelperActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.StatsActivity" android:theme="@style/AppTheme"/>
+        <receiver android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.receivers.DataReceiver">
+            <intent-filter>
+                <action android:name="com.eveningoutpost.dexdrip.BgEstimate"/>
+                <action android:name="com.eveningoutpost.dexdrip.NS_EMULATOR"/>
+                <action android:name="it.ct.glicemia.ACTION_GLUCOSE_MEASURED"/>
+                <action android:name="com.dexcom.cgm.EXTERNAL_BROADCAST"/>
+                <action android:name="com.china.poctech.data"/>
+                <action android:name="com.fanqies.tomatofn.BgEstimate"/>
+                <action android:name="com.microtechmd.cgms.aidex.action.BgEstimate"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.receivers.SmsReceiver" android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="info.nightscout.androidaps.plugins.aps.loop.CarbSuggestionReceiver"/>
+        <receiver android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.receivers.AutoStartReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="info.nightscout.androidaps.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths"/>
+        </provider>
+        <service android:exported="true" android:name="info.nightscout.androidaps.plugins.general.wear.wearintegration.DataLayerListenerServiceMobile">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.CHANNEL_EVENT"/>
+                <action android:name="com.google.android.gms.wearable.DATA_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.CAPABILITY_CHANGED"/>
+                <data android:host="*" android:scheme="wear"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED"/>
+                <data android:host="*" android:pathPrefix="@string/path_rx_bridge" android:scheme="wear"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.plugins.general.nsclient.services.NSClientService"/>
+        <service android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.services.AlarmSoundService"/>
+        <service android:exported="false" android:name="info.nightscout.androidaps.plugins.general.overview.notifications.DismissNotificationService"/>
+        <service android:name="info.nightscout.androidaps.plugins.general.persistentNotification.DummyService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:label="@string/title_activity_setup_wizard" android:name="info.nightscout.androidaps.setupwizard.SetupWizardActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.SingleFragmentActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.general.maintenance.activities.LogSettingActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.RequestDexcomPermissionActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.general.smsCommunicator.activities.SmsCommunicatorOtpActivity">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.general.smsCommunicator.activities.SmsCommunicatorOtpActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <service android:exported="false" android:name="info.nightscout.androidaps.services.LocationService"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.danars.activities.BLEScanActivity">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.PumpDanaRS.activities.BLEScanActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="info.nightscout.androidaps.danars.activities.PairingHelperActivity"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="info.nightscout.androidaps.danars.activities.EnterPinActivity"/>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.danars.services.DanaRSService"/>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.danar.services.DanaRExecutionService"/>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.danaRKorean.services.DanaRKoreanExecutionService"/>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.danaRv2.services.DanaRv2ExecutionService"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.dana.activities.DanaHistoryActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.dana.activities.DanaUserOptionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:label="@string/insight_pairing" android:name="info.nightscout.androidaps.plugins.pump.insight.activities.InsightPairingActivity" android:theme="@style/AppTheme"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:label="@string/pump_alert" android:launchMode="singleInstance" android:name="info.nightscout.androidaps.plugins.pump.insight.activities.InsightAlertActivity" android:theme="@style/InsightAlertDialog"/>
+        <activity android:exported="false" android:label="@string/pairing_information" android:name="info.nightscout.androidaps.plugins.pump.insight.activities.InsightPairingInformationActivity" android:theme="@style/AppTheme"/>
+        <service android:name="info.nightscout.androidaps.plugins.pump.insight.connection_service.InsightConnectionService"/>
+        <service android:name="info.nightscout.androidaps.plugins.pump.insight.InsightAlertService"/>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.medtronic.service.RileyLinkMedtronicService"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.medtronic.dialog.MedtronicHistoryActivity" android:theme="@style/AppTheme"/>
+        <service android:enabled="true" android:exported="true" android:name="info.nightscout.androidaps.plugins.pump.omnipod.eros.rileylink.service.RileyLinkOmnipodService"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.eros.ui.wizard.activation.ErosPodActivationWizardActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.eros.ui.wizard.deactivation.ErosPodDeactivationWizardActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.eros.ui.ErosPodManagementActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.eros.ui.ErosPodHistoryActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.common.dialog.RileyLinkBLEConfigActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.PumpCommon.dialog.RileyLinkBLEConfigActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:label="@string/title_activity_rileylink_settings" android:name="info.nightscout.androidaps.plugins.pump.common.hw.rileylink.dialog.RileyLinkStatusActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.dash.ui.wizard.activation.DashPodActivationWizardActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.dash.ui.wizard.deactivation.DashPodDeactivationWizardActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.dash.ui.DashPodManagementActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.omnipod.dash.ui.DashPodHistoryActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.plugins.pump.common.ui.PumpBLEConfigActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.pump.common.ui.PumpBLEConfigActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="info.nightscout.androidaps.plugins.pump.common.ui.PumpHistoryActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.diaconn.activities.DiaconnG8HistoryActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.diaconn.activities.DiaconnG8UserOptionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.diaconn.activities.DiaconnG8BLEScanActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.PumpDiaconnG8.activities.DiaconnG8BLEScanActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.diaconn.service.DiaconnG8Service"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.apex.activities.ApexHistoryActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.apex.activities.ApexUserOptionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.apex.activities.ApexBLEScanActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.PumpApex.activities.ApexBLEScanActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.apex.service.ApexService"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.equil.activities.EquilHistoryActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.equil.activities.EquilUserOptionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.equil.activities.EquilBLEScanActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="info.nightscout.androidaps.plugins.PumpEquil.activities.EquilBLEScanActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="info.nightscout.androidaps.equil.service.EquilService"/>
+        <service android:name="com.microtechmd.library.service.ServiceRemote"/>
+        <activity android:exported="true" android:label="Setup Open Humans" android:launchMode="singleTop" android:name="info.nightscout.androidaps.plugin.general.openhumans.ui.OHLoginActivity" android:theme="@style/OpenHumans">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="setup-openhumans" android:scheme="androidaps"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.TDDStatsActivity"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.BolusProgressHelperActivity" android:theme="@style/Theme.MaterialComponents.Translucent"/>
+        <activity android:exported="false" android:name="info.nightscout.androidaps.activities.ErrorHelperActivity" android:theme="@style/Theme.MaterialComponents.Translucent"/>
+        <provider android:authorities="info.nightscout.androidaps.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="net.danlew.android.joda.JodaTimeInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup"/>
+        </provider>
+        <activity android:name="dev.doubledot.doki.ui.DokiActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.google.firebase.auth.internal.GenericIdpActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="firebase.auth" android:path="/" android:scheme="genericidp"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.google.firebase.auth.internal.RecaptchaActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="firebase.auth" android:path="/" android:scheme="recaptcha"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <uses-library android:name="androidx.window.extensions" android:required="false"/>
+        <uses-library android:name="androidx.window.sidecar" android:required="false"/>
+        <provider android:authorities="info.nightscout.androidaps.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+    </application>
+</manifest>

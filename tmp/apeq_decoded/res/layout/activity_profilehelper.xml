@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabLayout android:id="@id/tab_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp">
+            <com.google.android.material.tabs.TabItem android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/profile1" />
+            <com.google.android.material.tabs.TabItem android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/profile2" />
+        </com.google.android.material.tabs.TabLayout>
+        <com.google.android.material.textfield.TextInputLayout android:id="@id/profile_type_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp" android:hint="@string/profiletype" android:paddingHorizontal="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/profile_type" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/default_profile" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TableRow android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/age_label" android:layout_width="150.0dp" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="@string/age" android:layout_marginStart="10.0dp" />
+                    <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/age" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginTop="4.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/age" />
+                </TableRow>
+                <TableRow android:gravity="center_vertical" android:id="@id/tdd_row" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/tdd_label" android:layout_width="150.0dp" android:layout_height="wrap_content" android:layout_marginTop="1.0dp" android:text="@string/tdd_total" android:layout_marginStart="10.0dp" />
+                    <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/tdd" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginTop="1.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/tdd_total" />
+                </TableRow>
+                <TableRow android:gravity="center_vertical" android:id="@id/weight_row" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/weight_label" android:layout_width="150.0dp" android:layout_height="wrap_content" android:text="@string/weight_label" android:layout_marginStart="10.0dp" />
+                    <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/weight" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/weight_label" />
+                </TableRow>
+                <TableRow android:gravity="center_vertical" android:id="@id/basal_pct_from_tdd_row" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/basal_pct_from_tdd_label" android:layout_width="150.0dp" android:layout_height="wrap_content" android:text="@string/basalpctfromtdd_label" android:layout_marginStart="10.0dp" />
+                    <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/basal_pct_from_tdd" android:layout_width="130.0dp" android:layout_height="40.0dp" app:customContentDescription="@string/basalpctfromtdd_label" />
+                </TableRow>
+            </TableLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/tdds" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="10.0dp" />
+            <info.nightscout.androidaps.utils.ui.SingleClickButton android:id="@id/copy_to_local_profile" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/clone_label" android:drawableStart="@drawable/ic_clone_48" style="@style/GrayButton" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/current_profile" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/current_profile_text" android:layout_width="150.0dp" android:layout_height="wrap_content" android:layout_marginStart="10.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/available_profile" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/selected_profile" android:paddingHorizontal="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/available_profile_list" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp" android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/profile_switch" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/careportal_profileswitch" android:paddingHorizontal="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/profileswitch_list" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp" android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <info.nightscout.androidaps.utils.ui.SingleClickButton android:id="@id/compare_profiles" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/comapareprofile" android:drawableStart="@drawable/ic_compare_profiles" style="@style/GrayButton" />
+    </LinearLayout>
+</ScrollView>

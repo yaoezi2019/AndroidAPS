@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/food_card" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="4.0dp" app:cardElevation="2.0dp" app:cardUseCompatPadding="true" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <LinearLayout android:gravity="start" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/twenty_four_dp" android:textStyle="bold" android:id="@id/name" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Name" />
+            <LinearLayout android:gravity="start" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="5.0dp">
+                <TextView android:gravity="center" android:id="@id/carbs" android:layout_width="50.0dp" android:layout_height="wrap_content" android:text="Carbs" />
+                <TextView android:gravity="center" android:id="@id/portion" android:layout_width="50.0dp" android:layout_height="wrap_content" android:text="Portion" />
+                <TextView android:gravity="center" android:id="@id/fat" android:layout_width="50.0dp" android:layout_height="wrap_content" android:text="Fat" />
+                <TextView android:gravity="center" android:id="@id/protein" android:layout_width="50.0dp" android:layout_height="wrap_content" android:text="Protein" />
+                <TextView android:gravity="center" android:id="@id/energy" android:layout_width="50.0dp" android:layout_height="wrap_content" android:text="Energy" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ic_calculator" android:layout_width="wrap_content" android:layout_height="match_parent" android:src="@drawable/ic_calculator" android:contentDescription="@string/overview_calculator_label" android:scaleX="0.5" android:scaleY="0.5" android:paddingStart="-5.0dp" android:paddingEnd="-5.0dp" />
+        <ImageView android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ic_remove" android:padding="2.0dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:src="@drawable/ic_trash_outline" android:contentDescription="@string/remove_label" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:theme="@style/AppTheme.Launcher.AppWidgetContainer" android:orientation="vertical" android:id="@id/widget_layout" android:background="@color/black" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/Widget.AndroidAPS.AppWidget.Container"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/active_profile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/temp_target" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="60.0sp" android:textStyle="bold" android:gravity="center" android:id="@id/bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00.0" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/arrows_layout" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_flat" android:contentDescription="@string/trend_arrow" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:id="@id/time_ago" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+        </LinearLayout>
+        <LinearLayout android:gravity="end|center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/deltas_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Δ: " android:contentDescription="last delta" android:textAlignment="textEnd" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" android:textAlignment="textEnd" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="15m Δ: " android:contentDescription="15 minutes delta" android:textAlignment="textEnd" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" android:textAlignment="textEnd" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="40m Δ: " android:contentDescription="40 minutes delta" android:textAlignment="textEnd" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/long_avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" android:textAlignment="textEnd" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/iob_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="5.0dp">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_bolus" android:contentDescription="@string/iob" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/iob" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/cob_layout" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/carbs_icon" android:background="@drawable/anim_carbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/cob" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/cob" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/basal_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/base_basal_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_cp_basal_no_tbr" android:contentDescription="@string/basal" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/base_basal" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/extended_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_actions_startextbolus" android:contentDescription="@string/extended_bolus" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/extended_bolus" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/as_layout" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/sensitivity_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_swap_vert_black_48dp_green" android:contentDescription="@string/a11y_autosenslabel" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/sensitivity" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="n/a" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/variable_sensitivity" android:paddingBottom="3.0dp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-9.0dp" android:text="n/a" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

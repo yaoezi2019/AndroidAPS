@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingTop="2.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/event_time_label" android:width="120.0dp" android:paddingStart="10.0dp" android:paddingEnd="4.0dp" android:labelFor="@id/eventtime" />
+    <TextView android:layout_gravity="center" android:id="@id/eventdate" android:background="@drawable/background_input_border" android:padding="10.0dp" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="?selectableItemBackgroundBorderless" android:layout_marginEnd="20.0dp" />
+    <TextView android:layout_gravity="center" android:id="@id/eventtime" android:background="@drawable/background_input_border" android:padding="10.0dp" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="?selectableItemBackgroundBorderless" />
+</LinearLayout>

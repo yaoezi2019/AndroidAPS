@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/autotune_settings" android:key="@string/key_autotune_plugin" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/autotune_auto_title" android:key="@string/key_autotune_auto" android:summary="@string/autotune_auto_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/autotune_categorize_uam_as_basal_title" android:key="@string/key_autotune_categorize_uam_as_basal" android:summary="@string/autotune_categorize_uam_as_basal_summary" android:defaultValue="false" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789" android:title="@string/autotune_default_tune_days_title" android:key="@string/key_autotune_default_tune_days" android:defaultValue="5" android:dialogMessage="@string/autotune_default_tune_days_summary" android:inputType="number" validate:maxNumber="30" validate:minNumber="1" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/autotune_circadian_ic_isf_title" android:key="@string/key_autotune_circadian_ic_isf" android:summary="@string/autotune_circadian_ic_isf_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/pump_history_root" android:background="?activity_title_backgroundColor" android:paddingTop="@dimen/activity_vertical_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/pump_history_top" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="center_vertical" android:id="@id/pump_history_type_text" android:layout_width="50.0dp" android:layout_height="wrap_content" android:layout_marginTop="7.0dp" android:text="@string/pump_history_type" android:layout_marginStart="8.0dp" android:layout_marginEnd="1.0dp" />
+        <Spinner android:theme="@style/CommonSpinnerItemStyle" android:textSize="13.0sp" android:id="@id/pump_history_type" android:layout_width="100.0dp" android:layout_height="wrap_content" android:layout_marginEnd="5.0dp" />
+        <TextView android:gravity="center_horizontal" android:layout_gravity="right" android:id="@id/pump_history_text" android:background="@drawable/pillborder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="20.0dp" />
+    </LinearLayout>
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/pump_history_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/pump_history_top" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/pump_history_recycler_view" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/pump_history_status" />
+</RelativeLayout>

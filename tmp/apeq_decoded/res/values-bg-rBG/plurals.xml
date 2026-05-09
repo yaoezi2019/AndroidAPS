@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="days">
+        <item quantity="one">%1$d дeн</item>
+        <item quantity="other">%1$d дни</item>
+    </plurals>
+    <plurals name="duration_days">
+        <item quantity="one">%1$d ден</item>
+        <item quantity="other">%1$d дни</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="one">%1$d часа</item>
+        <item quantity="other">%1$d часа</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%1$d час</item>
+        <item quantity="other">%1$d часа</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%1$d минутa</item>
+        <item quantity="other">%1$d минути</item>
+    </plurals>
+    <plurals name="omnipod_common_days">
+        <item quantity="one">%1$d дни</item>
+        <item quantity="other">%1$d дни</item>
+    </plurals>
+    <plurals name="omnipod_common_hours">
+        <item quantity="one">%1$d часа</item>
+        <item quantity="other">%1$d часа</item>
+    </plurals>
+    <plurals name="omnipod_common_minutes">
+        <item quantity="one">%1$d минути</item>
+        <item quantity="other">%1$d минути</item>
+    </plurals>
+    <plurals name="omnipod_common_pod_alerts">
+        <item quantity="one">Pod аларма: %1$s</item>
+        <item quantity="other">Pod аларми: %1$s</item>
+    </plurals>
+</resources>

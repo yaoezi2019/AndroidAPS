@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/boluscarbs_card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp" android:layout_marginStart="4.0dp" app:cardCornerRadius="4.0dp" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center" android:id="@id/date" android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/metadata_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="true">
+            <com.joanzapata.iconify.widget.IconTextView android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{fa-clock-o}" android:layout_marginStart="5.0dp" />
+            <TextView android:id="@id/calc_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5.0dp" />
+            <TextView android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" android:layout_marginEnd="10.0dp" />
+            <TextView android:textColor="@color/colorCalculatorButton" android:id="@id/calculation" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/calculation_short" android:textAlignment="viewEnd" android:layout_marginEnd="10.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bolus_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.joanzapata.iconify.widget.IconTextView android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{fa-clock-o}" android:layout_marginStart="5.0dp" />
+            <TextView android:id="@id/bolus_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5.0dp" />
+            <TextView android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/insulin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10.0dp" />
+            <TextView android:layout_gravity="top" android:id="@id/iob_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/treatments_iob_label_string" android:layout_marginStart="10.0dp" android:layout_marginEnd="5.0dp" />
+            <TextView android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/iob" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" android:layout_marginEnd="5.0dp" />
+            <TextView android:id="@id/meal_or_correction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="textEnd" />
+            <TextView android:textColor="?setTempButton" android:id="@id/bolus_ns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NS" android:layout_marginStart="5.0dp" />
+            <TextView android:textColor="?setTempButton" android:id="@id/bolus_pump" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PH" android:layout_marginStart="5.0dp" />
+            <TextView android:textColor="@android:color/holo_red_light" android:id="@id/bolus_invalid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/invalid" android:layout_marginStart="5.0dp" />
+            <CheckBox android:id="@id/cb_bolus_remove" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="19.0dp" android:minWidth="0.0dp" android:contentDescription="@string/select_for_removal" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="10.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/carbs_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.joanzapata.iconify.widget.IconTextView android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{fa-clock-o}" android:layout_marginStart="5.0dp" />
+            <TextView android:id="@id/carbs_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="5.0dp" />
+            <TextView android:layout_gravity="top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/treatments_carbs_label_string" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+            <TextView android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/carbs" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/carbs_duration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="10.0dp" />
+            <TextView android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+            <TextView android:textColor="?setTempButton" android:id="@id/carbs_ns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NS" android:layout_marginStart="5.0dp" />
+            <TextView android:textColor="?setTempButton" android:id="@id/carbs_pump" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PH" android:layout_marginStart="5.0dp" />
+            <TextView android:textColor="@android:color/holo_red_light" android:id="@id/carbs_invalid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/invalid" android:layout_marginStart="5.0dp" />
+            <CheckBox android:id="@id/cb_carbs_remove" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="19.0dp" android:minWidth="0.0dp" android:contentDescription="@string/select_for_removal" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="10.0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

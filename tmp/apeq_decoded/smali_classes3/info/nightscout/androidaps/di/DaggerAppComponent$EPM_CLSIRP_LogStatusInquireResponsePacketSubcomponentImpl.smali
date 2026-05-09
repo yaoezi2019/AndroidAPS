@@ -1,0 +1,121 @@
+.class final Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;
+.super Ljava/lang/Object;
+.source "DaggerAppComponent.java"
+
+# interfaces
+.implements Linfo/nightscout/androidaps/equil/di/EquilPacketModule_ContributesLogStatusInquireResponsePacket$LogStatusInquireResponsePacketSubcomponent;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Linfo/nightscout/androidaps/di/DaggerAppComponent;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1a
+    name = "EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl"
+.end annotation
+
+
+# instance fields
+.field private final appComponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;
+
+.field private final ePM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;
+
+
+# direct methods
+.method private constructor <init>(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)V
+    .locals 0
+
+    .line 34851
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 34847
+    iput-object p0, p0, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->ePM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;
+
+    .line 34852
+    iput-object p1, p0, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->appComponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl-IA;)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2}, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;-><init>(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)V
+
+    return-void
+.end method
+
+.method private injectLogStatusInquireResponsePacket(Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;
+    .locals 1
+
+    .line 34866
+    iget-object v0, p0, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->appComponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;
+
+    invoke-static {v0}, Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;->-$$Nest$fgetprovideAAPSLoggerProvider(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;)Ljavax/inject/Provider;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Ljavax/inject/Provider;->get()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Linfo/nightscout/shared/logging/AAPSLogger;
+
+    invoke-static {p1, v0}, Linfo/nightscout/androidaps/equil/packet/EquilPacket_MembersInjector;->injectAapsLogger(Linfo/nightscout/androidaps/equil/packet/EquilPacket;Linfo/nightscout/shared/logging/AAPSLogger;)V
+
+    .line 34867
+    iget-object v0, p0, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->appComponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;
+
+    invoke-static {v0}, Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;->-$$Nest$fgetdateUtilProvider(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;)Ljavax/inject/Provider;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Ljavax/inject/Provider;->get()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Linfo/nightscout/androidaps/utils/DateUtil;
+
+    invoke-static {p1, v0}, Linfo/nightscout/androidaps/equil/packet/EquilPacket_MembersInjector;->injectDateUtil(Linfo/nightscout/androidaps/equil/packet/EquilPacket;Linfo/nightscout/androidaps/utils/DateUtil;)V
+
+    .line 34868
+    iget-object v0, p0, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->appComponentImpl:Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;
+
+    invoke-static {v0}, Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;->-$$Nest$fgetequilPumpProvider(Linfo/nightscout/androidaps/di/DaggerAppComponent$AppComponentImpl;)Ljavax/inject/Provider;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Ljavax/inject/Provider;->get()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Linfo/nightscout/androidaps/equil/EquilPump;
+
+    invoke-static {p1, v0}, Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket_MembersInjector;->injectEquilPump(Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;Linfo/nightscout/androidaps/equil/EquilPump;)V
+
+    return-object p1
+.end method
+
+
+# virtual methods
+.method public inject(Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)V
+    .locals 0
+
+    .line 34860
+    invoke-direct {p0, p1}, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->injectLogStatusInquireResponsePacket(Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;
+
+    return-void
+.end method
+
+.method public bridge synthetic inject(Ljava/lang/Object;)V
+    .locals 0
+
+    .line 34844
+    check-cast p1, Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;
+
+    invoke-virtual {p0, p1}, Linfo/nightscout/androidaps/di/DaggerAppComponent$EPM_CLSIRP_LogStatusInquireResponsePacketSubcomponentImpl;->inject(Linfo/nightscout/androidaps/equil/packet/LogStatusInquireResponsePacket;)V
+
+    return-void
+.end method

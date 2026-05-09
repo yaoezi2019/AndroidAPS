@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:textAppearance="?android:textAppearanceSmall" android:gravity="center_horizontal" android:orientation="horizontal" android:paddingTop="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Spinner android:layout_gravity="center" android:id="@id/timelistedit_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="80.0dp" android:layout_marginEnd="10.0dp" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <info.nightscout.androidaps.utils.ui.NumberPickerVertical android:id="@id/timelistedit_edit1" android:layout_width="60.0dp" android:layout_height="100.0dp" android:layout_marginEnd="5.0dp" />
+        <info.nightscout.androidaps.utils.ui.NumberPickerVertical android:id="@id/timelistedit_edit2" android:layout_width="60.0dp" android:layout_height="100.0dp" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/timelistedit_add" android:layout_width="35.0dp" android:layout_height="35.0dp" android:contentDescription="@string/addnew_above" android:layout_marginStart="15.0dp" app:srcCompat="@drawable/ic_add" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/timelistedit_remove" android:layout_width="35.0dp" android:layout_height="35.0dp" android:contentDescription="@string/remove_label" android:layout_marginStart="15.0dp" app:srcCompat="@drawable/ic_remove" />
+</LinearLayout>

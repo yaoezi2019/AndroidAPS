@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/insight_local" android:key="@string/key_insight_local_settings" app:initialExpandedChildrenCount="0">
+        <Preference android:title="@string/insight_pairing">
+            <intent android:targetPackage="info.nightscout.aapspumpcontrol" android:targetClass="info.nightscout.androidaps.plugins.pump.insight.activities.InsightPairingInformationActivity" />
+        </Preference>
+        <SwitchPreference android:title="@string/log_reservoir_changes" android:key="@string/key_insight_log_reservoir_changes" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/log_tube_changes" android:key="@string/key_insight_log_tube_changes" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/log_site_changes" android:key="@string/key_insight_log_site_changes" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/log_battery_changes" android:key="@string/key_insight_log_battery_changes" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/log_operating_mode_changes" android:key="@string/key_insight_log_operating_mode_changes" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/log_alerts" android:key="@string/key_insight_log_alerts" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/enable_tbr_emulation" android:key="@string/key_insight_enable_tbr_emulation" android:summary="@string/enable_tbr_emulation_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/disable_vibration" android:key="@string/key_insight_disable_vibration" android:summary="@string/disable_vibration_summary" android:defaultValue="false" />
+        <EditTextPreference android:title="@string/min_recovery_duration" android:key="@string/key_insight_min_recovery_duration" android:defaultValue="5" android:inputType="number" />
+        <EditTextPreference android:title="@string/max_recovery_duration" android:key="@string/key_insight_max_recovery_duration" android:defaultValue="20" android:inputType="number" />
+        <EditTextPreference android:title="@string/disconnect_delay" android:key="@string/key_insight_disconnect_delay" android:defaultValue="5" android:inputType="number" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_cp_basal_start" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/tempbasal_label" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/percent_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/basal_percent_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/basal_rate" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/basal_percent_input" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/basal_rate" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="%" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/absolute_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/basal_absolute_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/basal_rate" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/basal_absolute_input" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/basal_rate" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/profile_ins_units_per_hour" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/duration_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_newnstreatment_duration_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.MinutesNumberPicker android:id="@id/duration" android:layout_width="130.0dp" android:layout_height="40.0dp" app:customContentDescription="@string/careportal_newnstreatment_duration_label" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/unit_minute_short" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <include android:id="@id/okcancel" layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

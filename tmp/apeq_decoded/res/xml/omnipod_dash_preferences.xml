@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_confirmation_beeps" android:key="@string/key_omnipod_common_preferences_category_confirmation_beeps" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_bolus_beeps_enabled" android:key="@string/key_omnipod_common_bolus_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_basal_beeps_enabled" android:key="@string/key_omnipod_common_basal_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_smb_beeps_enabled" android:key="@string/key_omnipod_common_smb_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_tbr_beeps_enabled" android:key="@string/key_omnipod_common_tbr_beeps_enabled" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_alerts" android:key="@string/key_common_preferences_category_alerts_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_expiration_reminder_enabled" android:key="@string/key_omnipod_common_expiration_reminder_enabled" android:defaultValue="true" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:digits="0123456789" android:title="@string/omnipod_common_preferences_expiration_reminder_hours_before_shutdown" android:key="@string/key_omnipod_common_expiration_reminder_hours_before_shutdown" android:dependency="@string/key_omnipod_common_expiration_reminder_enabled" android:defaultValue="9" android:inputType="number" validate:maxNumber="24" validate:minNumber="2" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_low_reservoir_alert_enabled" android:key="@string/key_omnipod_common_low_reservoir_alert_enabled" android:defaultValue="true" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:digits="0123456789" android:title="@string/omnipod_common_preferences_low_reservoir_alert_units" android:key="@string/key_omnipod_common_low_reservoir_alert_units" android:dependency="@string/key_omnipod_common_low_reservoir_alert_enabled" android:defaultValue="20" android:inputType="number" validate:maxNumber="50" validate:minNumber="5" validate:testType="numericRange" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_notifications" android:key="@string/key_omnipod_common_preferences_category_notifications_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_notification_uncertain_tbr_sound_enabled" android:key="@string/key_omnipod_common_notification_uncertain_tbr_sound_enabled" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_notification_uncertain_smb_sound_enabled" android:key="@string/key_omnipod_common_notification_uncertain_smb_sound_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_notification_uncertain_bolus_sound_enabled" android:key="@string/key_omnipod_common_notification_uncertain_bolus_sound_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_notification_delivery_suspended_sound_enabled" android:key="@string/key_omnipod_common_notification_delivery_suspended_sound_enabled" android:defaultValue="true" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

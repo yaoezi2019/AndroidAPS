@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/xdripstatus_settings" android:key="@string/key_xdripstatus_settings" app:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/wear_detailedIOB_title" android:key="@string/key_xdripstatus_detailediob" android:summary="@string/wear_detailedIOB_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/wear_showbgi_title" android:key="@string/key_xdripstatus_showbgi" android:summary="@string/wear_showbgi_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

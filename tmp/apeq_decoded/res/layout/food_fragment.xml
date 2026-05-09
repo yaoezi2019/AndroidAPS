@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.textfield.TextInputLayout android:id="@id/filter_input_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/filter" app:endIconMode="clear_text" app:startIconDrawable="@android:drawable/ic_menu_search" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText android:textStyle="bold" android:gravity="start" android:layout_gravity="center_vertical" android:id="@id/filter" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:inputType="textCapSentences" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" android:autofillHints="@string/notes_label" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/category" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/categoryList" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/subcategory" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/subcategoryList" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerview" android:layout_width="match_parent" android:layout_height="match_parent" />
+</LinearLayout>

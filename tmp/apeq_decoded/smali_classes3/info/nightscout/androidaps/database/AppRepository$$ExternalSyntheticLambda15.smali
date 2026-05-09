@@ -1,0 +1,38 @@
+.class public final synthetic Linfo/nightscout/androidaps/database/AppRepository$$ExternalSyntheticLambda15;
+.super Ljava/lang/Object;
+.source "D8$$SyntheticClass"
+
+# interfaces
+.implements Lio/reactivex/rxjava3/functions/Function;
+
+
+# instance fields
+.field public final synthetic f$0:Linfo/nightscout/androidaps/database/entities/Food;
+
+
+# direct methods
+.method public synthetic constructor <init>(Linfo/nightscout/androidaps/database/entities/Food;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Linfo/nightscout/androidaps/database/AppRepository$$ExternalSyntheticLambda15;->f$0:Linfo/nightscout/androidaps/database/entities/Food;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final apply(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Linfo/nightscout/androidaps/database/AppRepository$$ExternalSyntheticLambda15;->f$0:Linfo/nightscout/androidaps/database/entities/Food;
+
+    check-cast p1, Linfo/nightscout/androidaps/database/entities/Food;
+
+    invoke-static {v0, p1}, Linfo/nightscout/androidaps/database/AppRepository;->$r8$lambda$T-xC7VrLg_jhr-9SIZgxEvV9v_I(Linfo/nightscout/androidaps/database/entities/Food;Linfo/nightscout/androidaps/database/entities/Food;)Lkotlin/Pair;
+
+    move-result-object p1
+
+    return-object p1
+.end method

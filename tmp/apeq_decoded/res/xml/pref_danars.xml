@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:validate="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/danarspump" android:key="@string/key_danars_settings" app:initialExpandedChildrenCount="0">
+        <Preference android:title="@string/selectedpump" android:key="@string/key_danars_name" android:summary="">
+            <intent android:action="info.nightscout.androidaps.plugins.PumpDanaRS.activities.BLEScanActivity" />
+        </Preference>
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:digits="0123456789ABCDEF" android:title="@string/danars_password_title" android:key="@string/key_danars_password" android:inputType="numberPassword" app:customRegexp="@string/fourhexanumber" app:testErrorString="@string/error_mustbe4hexadidits" app:testType="regexp" />
+        <ListPreference android:entries="@array/danaSpeedArray" android:title="@string/bolusspeed" android:key="@string/key_danars_bolusspeed" android:defaultValue="0" android:entryValues="@array/danaSpeedValues" />
+        <SwitchPreference android:title="@string/rs_loginsulinchange_title" android:key="@string/key_rs_loginsulinchange" android:summary="@string/rs_loginsulinchange_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/rs_logcanulachange_title" android:key="@string/key_rs_logcanulachange" android:summary="@string/rs_logcanulachange_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

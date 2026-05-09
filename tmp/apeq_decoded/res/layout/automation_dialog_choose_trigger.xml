@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_trigger_green_48dp" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/please_choose_a_trigger_type" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <RadioGroup android:id="@id/chooseTriggerRadioGroup" android:padding="10.0dp" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <include layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/medtronic_name" android:key="@string/key_medtronic_name_settings" validate:initialExpandedChildrenCount="0">
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:singleLine="false" android:selectAllOnFocus="true" android:title="@string/medtronic_serial_number" android:key="@string/key_medtronic_serial" android:defaultValue="0" validate:customRegexp="@string/sixdigitnumber" validate:testErrorString="@string/error_mustbe6digitnumber" validate:testType="regexp" />
+        <ListPreference android:entries="@array/medtronicPumpTypeArray" android:title="@string/medtronic_pump_type" android:key="@string/key_medtronic_pump_type" android:defaultValue="1" android:entryValues="@array/medtronicPumpTypeArray" />
+        <ListPreference android:entries="@array/medtronicPumpFreqArray" android:title="@string/medtronic_pump_frequency" android:selectable="true" android:key="@string/key_medtronic_frequency" android:defaultValue="@string/key_medtronic_pump_frequency_us_ca" android:entryValues="@array/medtronicPumpFreqValues" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789." android:title="@string/medtronic_pump_max_basal" android:key="@string/key_medtronic_max_basal" android:defaultValue="35" android:inputType="number" validate:maxNumber="35" validate:minNumber="1" validate:testType="numericRange" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789." android:title="@string/medtronic_pump_max_bolus" android:key="@string/key_medtronic_max_bolus" android:defaultValue="25" android:inputType="number" validate:maxNumber="25" validate:minNumber="1" validate:testType="numericRange" />
+        <ListPreference android:entries="@array/medtronicBolusDelay" android:title="@string/medtronic_pump_bolus_delay" android:selectable="true" android:key="@string/key_medtronic_bolus_delay" android:defaultValue="10" android:entryValues="@array/medtronicBolusDelay" />
+        <ListPreference android:entries="@array/medtronicEncoding" android:title="@string/medtronic_pump_encoding" android:selectable="true" android:key="@string/key_medtronic_encoding" android:defaultValue="@string/key_medtronic_pump_encoding_4b6b_rileylink" android:entryValues="@array/medtronicEncodingValues" />
+        <ListPreference android:entries="@array/medtronicBatteryType" android:title="@string/medtronic_pump_battery_select" android:selectable="true" android:key="@string/key_medtronic_battery_type" android:defaultValue="@string/key_medtronic_pump_battery_no" android:entryValues="@array/medtronicBatteryTypeValues" />
+        <ListPreference android:entries="@array/onOff" android:title="@string/medtronic_bolus_debugging" android:selectable="true" android:key="@string/key_medtronic_bolus_debug" android:defaultValue="@string/common_off" android:entryValues="@array/onOff" />
+        <Preference android:enabled="true" android:title="@string/rileylink_configuration" android:key="@string/key_rileylink_mac_address" android:summary="">
+            <intent android:action="info.nightscout.androidaps.plugins.PumpCommon.dialog.RileyLinkBLEConfigActivity" />
+        </Preference>
+        <SwitchPreference android:title="@string/orange_use_scanning_level" android:key="@string/key_orange_use_scanning" android:summary="@string/orange_use_scanning_level_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/riley_link_show_battery_level" android:key="@string/key_riley_link_show_battery_level" android:summary="@string/riley_link_show_battery_level_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/set_neutral_temps_title" android:key="@string/key_set_neutral_temps" android:summary="@string/set_neutral_temps_summary" android:defaultValue="true" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

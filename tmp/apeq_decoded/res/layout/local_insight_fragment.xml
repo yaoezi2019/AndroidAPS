@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/status_item_container" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:layout_gravity="center" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableTop="@drawable/ic_insight" />
+        <com.google.android.material.button.MaterialButton android:id="@id/refresh" android:visibility="gone" android:layout_width="match_parent" android:layout_height="100.0dp" android:layout_marginTop="16.0dp" android:text="@string/refresh" style="@style/GrayButton" />
+        <com.google.android.material.button.MaterialButton android:id="@id/operating_mode" android:visibility="gone" android:layout_width="match_parent" android:layout_height="100.0dp" android:layout_marginTop="16.0dp" style="@style/GrayButton" />
+        <com.google.android.material.button.MaterialButton android:id="@id/tbr_over_notification" android:visibility="gone" android:layout_width="match_parent" android:layout_height="100.0dp" android:layout_marginTop="16.0dp" style="@style/GrayButton" />
+    </LinearLayout>
+</ScrollView>

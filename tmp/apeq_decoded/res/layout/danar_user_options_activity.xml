@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusable="true" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/header" android:background="?activity_title_backgroundColor" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_danar_useropt" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/danar_pump_settings" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@id/timeformat" android:layout_width="match_parent" android:layout_height="wrap_content" android:textOn="@string/timeformat24h" android:textOff="@string/timeformat12h" android:text="@string/danar_timedisplay" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" app:showText="true" />
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@id/buttonscroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:textOn="@string/option_on" android:textOff="@string/option_off" android:text="@string/danar_buttonscroll" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" app:showText="true" />
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@id/beep" android:layout_width="match_parent" android:layout_height="wrap_content" android:textOn="@string/option_on" android:textOff="@string/option_off" android:text="@string/danar_beep" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" app:showText="true" />
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/danar_pumpalarm" android:layout_weight="1.0" />
+            <RadioGroup android:orientation="horizontal" android:id="@id/pumpalarm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkedButton="@id/pumpalarm_sound">
+                <RadioButton android:id="@id/pumpalarm_sound" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/danar_pumpalarm_sound" />
+                <RadioButton android:id="@id/pumpalarm_vibrate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/danar_pumpalarm_vibrate" />
+                <RadioButton android:id="@id/pumpalarm_both" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/danar_pumpalarm_both" />
+            </RadioGroup>
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="top" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/danar_screentimeout" android:layout_weight="1.0" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:layout_gravity="end" android:id="@id/screentimeout" android:layout_width="wrap_content" android:layout_height="40.0dp" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="top" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/danar_backlight" android:layout_weight="1.0" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:layout_gravity="end" android:id="@id/backlight" android:layout_width="wrap_content" android:layout_height="40.0dp" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@id/units" android:layout_width="match_parent" android:layout_height="wrap_content" android:textOn="@string/mmol" android:textOff="@string/mgdl" android:text="@string/danar_glucoseunits" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" android:splitTrack="false" app:showText="true" />
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/danar_shutdown" android:layout_weight="1.0" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:layout_gravity="end" android:id="@id/shutdown" android:layout_width="wrap_content" android:layout_height="40.0dp" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/danar_lowreservoir" android:layout_weight="1.0" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:layout_gravity="end" android:id="@id/lowreservoir" android:layout_width="wrap_content" android:layout_height="40.0dp" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@id/save_user_options" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/danar_saveuseroptions" android:drawableStart="@drawable/ic_local_save" style="@style/ButtonSmallFontStyle" />
+    </LinearLayout>
+</ScrollView>

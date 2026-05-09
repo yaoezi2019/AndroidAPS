@@ -1,0 +1,79 @@
+.class final Lcom/google/android/gms/wearable/internal/zzba;
+.super Lcom/google/android/gms/wearable/internal/zzn;
+.source "com.google.android.gms:play-services-wearable@@17.1.0"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/android/gms/wearable/internal/zzn<",
+        "Lcom/google/android/gms/common/api/Status;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic zza:I
+
+.field final synthetic zzb:Lcom/google/android/gms/wearable/internal/zzbi;
+
+
+# direct methods
+.method constructor <init>(Lcom/google/android/gms/wearable/internal/zzbi;Lcom/google/android/gms/common/api/GoogleApiClient;I)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/google/android/gms/wearable/internal/zzba;->zzb:Lcom/google/android/gms/wearable/internal/zzbi;
+
+    iput p3, p0, Lcom/google/android/gms/wearable/internal/zzba;->zza:I
+
+    .line 1
+    invoke-direct {p0, p2}, Lcom/google/android/gms/wearable/internal/zzn;-><init>(Lcom/google/android/gms/common/api/GoogleApiClient;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method protected final bridge synthetic createFailedResult(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/Result;
+    .locals 0
+
+    return-object p1
+.end method
+
+.method protected final bridge synthetic doExecute(Lcom/google/android/gms/common/api/Api$AnyClient;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .line 1
+    check-cast p1, Lcom/google/android/gms/wearable/internal/zzhv;
+
+    iget-object v0, p0, Lcom/google/android/gms/wearable/internal/zzba;->zzb:Lcom/google/android/gms/wearable/internal/zzbi;
+
+    invoke-static {v0}, Lcom/google/android/gms/wearable/internal/zzbi;->zzb(Lcom/google/android/gms/wearable/internal/zzbi;)Ljava/lang/String;
+
+    move-result-object v0
+
+    iget v1, p0, Lcom/google/android/gms/wearable/internal/zzba;->zza:I
+
+    .line 2
+    invoke-virtual {p1}, Lcom/google/android/gms/wearable/internal/zzhv;->getService()Landroid/os/IInterface;
+
+    move-result-object p1
+
+    .line 3
+    check-cast p1, Lcom/google/android/gms/wearable/internal/zzeu;
+
+    new-instance v2, Lcom/google/android/gms/wearable/internal/zzgz;
+
+    invoke-direct {v2, p0}, Lcom/google/android/gms/wearable/internal/zzgz;-><init>(Lcom/google/android/gms/common/api/internal/BaseImplementation$ResultHolder;)V
+
+    .line 4
+    invoke-virtual {p1, v2, v0, v1}, Lcom/google/android/gms/wearable/internal/zzeu;->zzw(Lcom/google/android/gms/wearable/internal/zzeq;Ljava/lang/String;I)V
+
+    return-void
+.end method

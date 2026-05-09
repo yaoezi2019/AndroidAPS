@@ -474,6 +474,22 @@ enum class PumpType(
         pumpCapability = PumpCapability.DiaconnCapabilities,
         source = Source.EQuil,
         useHardwareLink = true,
+    ),
+    APEX(
+        description = "Apex",
+        manufacturer = ManufacturerType.Apex,
+        model = "Apex",
+        bolusSize = 0.05,
+        specialBolusSize = null,
+        extendedBolusSettings = DoseSettings(0.05, 30, 8 * 60, 0.05),
+        pumpTempBasalType = PumpTempBasalType.Percent,
+        tbrSettings = DoseSettings(10.0, 60, 24 * 60, 0.0, 200.0),
+        specialBasalDurations = arrayOf(Capability.BasalRate_Duration15minAllowed, Capability.BasalRate_Duration30minAllowed),
+        baseBasalMinValue = 0.04,
+        baseBasalStep = 0.01,
+        baseBasalSpecialSteps = null,
+        pumpCapability = PumpCapability.DanaWithHistoryCapabilities,
+        source = Source.Apex
     );
 
     fun manufacturer() = parent?.manufacturer ?: manufacturer ?: throw IllegalStateException()
@@ -511,7 +527,8 @@ enum class PumpType(
         MDI,
         VirtualPump,
         Unknown,
-        EQuil
+        EQuil,
+        Apex
     }
 
     companion object {

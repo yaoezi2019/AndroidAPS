@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/pump" android:key="@string/key_pump_settings" app:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/btwatchdog_title" android:key="@string/key_btwatchdog" android:summary="@string/btwatchdog_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

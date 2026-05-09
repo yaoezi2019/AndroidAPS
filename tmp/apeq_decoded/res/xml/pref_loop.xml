@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/loop" android:key="@string/key_loop_settings" validate:initialExpandedChildrenCount="0">
+        <ListPreference android:entries="@array/aps_modeArray" android:title="@string/apsmode_title" android:key="@string/key_aps_mode" android:defaultValue="open" android:entryValues="@array/aps_modeValues" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="1" android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789" android:title="@string/loop_openmode_min_change" android:key="@string/key_loop_openmode_min_change" android:defaultValue="20" android:dialogMessage="@string/loop_openmode_min_change_summary" android:inputType="number" validate:maxNumber="50" validate:minNumber="0" validate:testType="numericRange" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

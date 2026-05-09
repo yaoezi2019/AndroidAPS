@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/combopump" android:key="@string/key_combo_name_settings" validate:initialExpandedChildrenCount="0">
+        <ListPreference android:entries="@array/comboErrorDisplay" android:title="@string/show_comm_error_count_title" android:selectable="true" android:key="@string/key_show_comm_error_count" android:summary="@string/show_comm_error_count_summary" android:defaultValue="@string/key_combo_error_display_error" android:entryValues="@array/comboErrorDisplayValues" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

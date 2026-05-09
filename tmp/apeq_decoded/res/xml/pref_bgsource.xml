@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/bgsource_upload" android:key="@string/key_bgsource_upload_settings" app:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/dexcomg5_nsupload_title" android:key="@string/key_dexcomg5_nsupload" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/dexcomg5_xdripupload_title" android:key="@string/key_dexcomg5_xdripupload" android:summary="@string/dexcomg5_xdripupload_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

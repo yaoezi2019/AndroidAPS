@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/extended_bolus_card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp" android:layout_marginStart="4.0dp" app:cardCornerRadius="4.0dp" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="5.0dp" android:paddingBottom="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="10.0dp" android:paddingEnd="0.0dp">
+        <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/history_time" android:layout_width="100.0dp" android:layout_height="match_parent" />
+        <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/history_source" android:layout_width="80.0dp" android:layout_height="match_parent" />
+        <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/history_description" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

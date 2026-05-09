@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/progress_bar" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@id/no_records_text" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no_records_available" android:layout_alignParentTop="true" android:textAlignment="center" android:paddingVertical="50.0dp" />
+    <info.nightscout.androidaps.extensions.EmptyRecyclerView android:id="@id/recyclerview" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_alignParentTop="true" />
+</RelativeLayout>

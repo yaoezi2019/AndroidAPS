@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/configbuilder_general" android:key="@string/key_configbuilder_general_settings" validate:initialExpandedChildrenCount="0">
+        <ListPreference android:entries="@array/unitsArray" android:title="@string/unitsnosemicolon" android:key="@string/key_units" android:defaultValue="mg/dl" android:entryValues="@array/unitsValues" />
+        <ListPreference android:entries="@array/languagesArray" android:title="@string/language" android:key="@string/key_language" android:defaultValue="default" android:entryValues="@array/languagesValues" />
+        <EditTextPreference android:title="@string/patient_name" android:key="@string/key_patient_name" android:summary="@string/patient_name_summary" android:inputType="textPersonName" />
+        <PreferenceCategory android:title="@string/protection" android:key="@string/key_protection_settings">
+            <Preference android:title="@string/master_password" android:key="@string/key_master_password" android:inputType="textPassword" />
+            <ListPreference android:entries="@array/protectiontype" android:title="@string/settings_protection" android:key="@string/key_settings_protection" android:defaultValue="0" android:entryValues="@array/protectiontypeValues" />
+            <Preference android:title="@string/settings_password" android:key="@string/key_settings_password" />
+            <Preference android:title="@string/settings_pin" android:key="@string/key_settings_pin" />
+            <ListPreference android:entries="@array/protectiontype" android:title="@string/application_protection" android:key="@string/key_application_protection" android:defaultValue="0" android:entryValues="@array/protectiontypeValues" />
+            <Preference android:title="@string/application_password" android:key="@string/key_application_password" />
+            <Preference android:title="@string/application_pin" android:key="@string/key_application_pin" />
+            <ListPreference android:entries="@array/protectiontype" android:title="@string/bolus_protection" android:key="@string/key_bolus_protection" android:defaultValue="0" android:entryValues="@array/protectiontypeValues" />
+            <Preference android:title="@string/bolus_password" android:key="@string/key_bolus_password" />
+            <Preference android:title="@string/bolus_pin" android:key="@string/key_bolus_pin" />
+            <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="1" android:singleLine="true" android:digits="0123456789" android:title="@string/protection_timeout_title" android:key="@string/key_protection_timeout" android:summary="@string/protection_timeout_summary" android:defaultValue="1" android:inputType="number" validate:maxNumber="180" validate:minNumber="1" validate:testType="numericRange" />
+        </PreferenceCategory>
+        <info.nightscout.androidaps.skins.SkinListPreference android:title="@string/skin" android:key="@string/key_skin" />
+        <ListPreference android:entries="@array/darkMode" android:title="@string/app_color_scheme" android:key="@string/key_use_dark_mode" android:summary="@string/theme_switcher_summary" android:defaultValue="dark" android:entryValues="@array/darkModeValues" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

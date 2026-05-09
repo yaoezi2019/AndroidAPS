@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation app:startDestination="@id/startPodActivationFragment"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <fragment android:label="StartPodActivationFragment" android:name="info.nightscout.androidaps.plugins.pump.omnipod.common.ui.wizard.activation.fragment.info.StartPodActivationFragment" android:id="@id/startPodActivationFragment">
+        <action android:id="@id/action_startPodActivationFragment_to_initializePodFragment" app:destination="@id/initializePodFragment" />
+    </fragment>
+    <fragment android:label="InitializePodFragment" android:name="info.nightscout.androidaps.plugins.pump.omnipod.common.ui.wizard.activation.fragment.action.InitializePodFragment" android:id="@id/initializePodFragment">
+        <action android:id="@id/action_initializePodFragment_to_attachPodFragment" app:destination="@id/attachPodFragment" />
+    </fragment>
+    <fragment android:label="AttachPodFragment" android:name="info.nightscout.androidaps.plugins.pump.omnipod.common.ui.wizard.activation.fragment.info.AttachPodFragment" android:id="@id/attachPodFragment">
+        <action android:id="@id/action_attachPodFragment_to_insertCannulaFragment" app:destination="@id/insertCannulaFragment" />
+    </fragment>
+    <fragment android:label="InsertCannulaFragment" android:name="info.nightscout.androidaps.plugins.pump.omnipod.common.ui.wizard.activation.fragment.action.InsertCannulaFragment" android:id="@id/insertCannulaFragment">
+        <action android:id="@id/action_insertCannulaFragment_to_PodActivatedFragment" app:destination="@id/PodActivatedFragment" />
+    </fragment>
+    <fragment android:label="PodActivatedFragment" android:name="info.nightscout.androidaps.plugins.pump.omnipod.common.ui.wizard.activation.fragment.info.PodActivatedFragment" android:id="@id/PodActivatedFragment" />
+</navigation>

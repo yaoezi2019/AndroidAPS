@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:validate="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/equil_pump" app:initialExpandedChildrenCount="0">
+        <Preference android:title="@string/selectedpump" android:key="@string/key_equil_ble_name" android:summary="">
+            <intent android:action="info.nightscout.androidaps.plugins.PumpEquil.activities.EquilBLEScanActivity" />
+        </Preference>
+        <ListPreference android:entries="@array/equilSpeedArray" android:title="@string/bolusspeed" android:key="@string/key_diaconn_g8_bolusspeed" android:defaultValue="5" android:entryValues="@array/equilSpeedValues" />
+        <SwitchPreference android:title="@string/diaconn_g8_loginsulinchange_title" android:key="@string/key_diaconn_g8_loginsulinchange" android:summary="@string/diaconn_g8_loginsulinchange_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/diaconn_g8_logcanulachange_title" android:key="@string/key_diaconn_g8_logneedlechange" android:summary="@string/diaconn_g8_logcanulachange_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/diaconn_g8_logtubechange_title" android:key="@string/key_diaconn_g8_logtubechange" android:summary="@string/diaconn_g8_logtubechange_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/diaconn_g8_logbatterychange_title" android:key="@string/key_diaconn_g8_logbatterychange" android:summary="@string/diaconn_g8_logbatterychange_summary" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/diaconn_g8_cloudsend_title" android:key="@string/key_diaconn_g8_cloudsend" android:summary="@string/diaconn_g8_cloudsend_summary" android:defaultValue="true" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

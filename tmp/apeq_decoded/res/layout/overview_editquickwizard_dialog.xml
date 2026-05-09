@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_quick_wizard" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/quickwizardsettings" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_buttontext" android:labelFor="@id/button_edit" />
+        <EditText android:id="@id/button_edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" android:inputType="text" android:autofillHints="name" />
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_carbs" android:labelFor="@id/carbs_edit" />
+        <EditText android:id="@id/carbs_edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" android:inputType="numberDecimal" android:autofillHints="number" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/overview_editquickwizard_valid" />
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:gravity="center" android:layout_gravity="center" android:id="@id/from" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="match_parent" />
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="-" />
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:gravity="center" android:layout_gravity="center" android:id="@id/to" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="match_parent" />
+        </LinearLayout>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/device_label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_show_on_device" />
+        <RadioGroup android:id="@id/device" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/device_all" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/device_phone" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/device_watch" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usebg" />
+        <RadioGroup android:id="@id/use_bg" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usebolusiob" />
+        <RadioGroup android:id="@id/use_bolus_iob" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usebasaliob" />
+        <RadioGroup android:id="@id/use_basal_iob" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/positiveonly" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/negativeonly" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usecob" />
+        <RadioGroup android:id="@id/use_cob" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:id="@id/use_cob_yes" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:id="@id/use_cob_no" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usetrend" />
+        <RadioGroup android:id="@id/use_trend" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/positiveonly" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/negativeonly" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usesuperbolus" />
+        <RadioGroup android:id="@id/use_super_bolus" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usetemptarget" />
+        <RadioGroup android:id="@id/use_temp_target" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/yes" />
+            <RadioButton android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_usepercentage" />
+        <RadioGroup android:id="@id/use_percentage" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15.0dp">
+            <RadioButton android:id="@id/use_percentage_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/app_default" />
+            <RadioButton android:id="@id/use_percentage_custom" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/custom" />
+        </RadioGroup>
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:id="@id/percentage_label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_percentage" />
+        <EditText android:id="@id/percentage" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" android:maxLength="3" android:inputType="number" android:importantForAutofill="no" />
+        <include android:id="@id/okcancel" layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

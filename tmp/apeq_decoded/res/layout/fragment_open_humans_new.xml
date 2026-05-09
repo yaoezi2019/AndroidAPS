@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:animateLayoutChanges="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:paddingBottom="16.0dp" android:layout_width="200.0dp" android:layout_height="200.0dp" android:contentDescription="@null" app:srcCompat="@drawable/open_humans" />
+        <TextView android:textAppearance="?textAppearanceHeadline5" android:textColor="?colorPrimary" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/open_humans" />
+        <TextView android:textAppearance="?textAppearanceBody2" android:textColor="@color/open_humans_text" android:gravity="center" android:id="@id/info" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/setup_completed_info" />
+        <TextView android:textAppearance="?textAppearanceBody1" android:textColor="@color/open_humans_text" android:gravity="center" android:id="@id/member_id" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" />
+        <com.google.android.material.button.MaterialButton android:id="@id/setup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/setup" />
+        <com.google.android.material.button.MaterialButton android:id="@id/upload_now" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/upload_now" />
+        <com.google.android.material.button.MaterialButton android:id="@id/logout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/logout" />
+    </LinearLayout>
+</ScrollView>

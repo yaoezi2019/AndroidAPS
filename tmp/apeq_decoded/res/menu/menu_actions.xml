@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_trash" android:id="@id/nav_remove_items" android:orderInCategory="0" android:title="@string/remove_items" android:iconTint="?colorControlNormal" app:showAsAction="ifRoom" />
+    <item android:icon="@drawable/ic_sort" android:id="@id/nav_sort_items" android:orderInCategory="0" android:title="@string/sort_items" app:showAsAction="ifRoom" />
+</menu>

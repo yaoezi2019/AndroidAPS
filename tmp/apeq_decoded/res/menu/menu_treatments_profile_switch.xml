@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_trash" android:id="@id/nav_remove_items" android:title="@string/remove_items" app:showAsAction="ifRoom" />
+    <item android:icon="@drawable/ic_visibility" android:id="@id/nav_show_invalidated" android:title="@string/show_invalidated" app:showAsAction="ifRoom" />
+    <item android:icon="@drawable/ic_visibility_off" android:id="@id/nav_hide_invalidated" android:title="@string/hide_invalidated" app:showAsAction="ifRoom" />
+</menu>

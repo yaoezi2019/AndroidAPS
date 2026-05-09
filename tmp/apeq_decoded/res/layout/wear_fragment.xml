@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="2.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:gravity="center" android:id="@id/connected_device" android:paddingTop="10.0dp" android:paddingBottom="10.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no_watch_connected" />
+    <com.google.android.material.button.MaterialButton android:textColor="?treatmentButton" android:id="@id/resend" android:paddingLeft="0.0dp" android:paddingRight="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/resend_all_data" android:drawableTop="@drawable/ic_refresh" style="@style/GrayButton" />
+    <com.google.android.material.button.MaterialButton android:textColor="?treatmentButton" android:id="@id/open_settings" android:paddingLeft="0.0dp" android:paddingRight="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/open_settings_on_wear" android:drawableTop="@drawable/ic_settings" style="@style/GrayButton" />
+</LinearLayout>

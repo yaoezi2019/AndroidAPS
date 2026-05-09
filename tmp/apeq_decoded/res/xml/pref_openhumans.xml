@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/open_humans" android:key="@string/key_open_humans_settings">
+        <CheckBoxPreference android:title="@string/only_upload_if_connected_to_wifi" android:key="key_oh_wifi_only" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/only_upload_if_charging" android:key="key_oh_charging_only" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

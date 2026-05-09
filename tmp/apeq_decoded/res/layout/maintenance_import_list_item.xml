@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/careportal_cardview" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:layout_marginStart="4.0dp" android:layout_marginEnd="4.0dp" app:cardCornerRadius="4.0dp" app:cardElevation="2.0dp" app:cardUseCompatPadding="false" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dp" android:layout_marginBottom="3.0dp">
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="true">
+            <ImageView android:layout_width="18.0dp" android:layout_height="18.0dp" android:layout_marginTop="4.0dp" android:layout_marginBottom="1.0dp" android:contentDescription="@string/a11y_file" android:layout_marginStart="5.0dp" android:layout_marginEnd="6.0dp" app:srcCompat="@drawable/ic_meta_format" app:tint="?importListFileNameColor" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?importListFileNameColor" android:ellipsize="none" android:id="@id/filelist_name" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="File name here" android:maxLines="2" android:scrollHorizontally="false" android:layout_weight="1.0" android:paddingStart="0.0dp" android:paddingEnd="10.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="true">
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:textSize="11.0sp" android:textColor="?importListFileNameColor" android:ellipsize="none" android:id="@id/filelist_dir" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="File dir here" android:maxLines="2" android:scrollHorizontally="false" android:layout_weight="1.0" android:paddingStart="0.0dp" android:paddingEnd="10.0dp" android:layout_marginStart="29.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/metaline_name" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="6.0dp">
+            <ImageView android:layout_width="16.0dp" android:layout_height="16.0dp" android:layout_marginTop="1.0dp" android:layout_marginBottom="1.0dp" android:contentDescription="@string/a11y_user" android:layout_marginStart="30.0dp" android:layout_marginEnd="8.0dp" app:srcCompat="@drawable/ic_meta_name" app:tint="?importListAdditionalInfoColor" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="?importListAdditionalInfoColor" android:id="@id/meta_device_name" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="exported on this Patient phone" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="3.0dp">
+            <ImageView android:id="@id/meta_date_time_icon" android:layout_width="16.0dp" android:layout_height="16.0dp" android:layout_marginTop="1.0dp" android:layout_marginBottom="1.0dp" android:importantForAccessibility="no" android:layout_marginStart="30.0dp" android:layout_marginEnd="8.0dp" app:srcCompat="@drawable/ic_meta_date" app:tint="?importListAdditionalInfoColor" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="?importListAdditionalInfoColor" android:id="@id/meta_date_time" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="exported how long ago" android:layout_weight="1.0" />
+            <TextView android:textColor="?metadataTextWarningColor" android:id="@id/meta_app_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="v10.10.10.10" android:layout_marginEnd="10.0dp" />
+            <TextView android:textColor="?metadataTextOkColor" android:id="@id/meta_variant_format" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FLAVOUR" android:layout_marginEnd="10.0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

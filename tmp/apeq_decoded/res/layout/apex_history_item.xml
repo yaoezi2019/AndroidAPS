@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/apex_history_card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="4.0dp" app:cardCornerRadius="4.0dp" app:cardElevation="2.0dp" app:cardUseCompatPadding="true" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="true" android:weightSum="1.0">
+        <TextView android:id="@id/apex_history_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.3" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:gravity="left" android:id="@id/apex_history_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.3" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:gravity="left" android:id="@id/apex_history_value2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.4" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:gravity="left" android:id="@id/apex_history_value3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.4" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

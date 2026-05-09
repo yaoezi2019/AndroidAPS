@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/smscommunicator" android:key="@string/key_smscommunicator_settings" validate:initialExpandedChildrenCount="0">
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/smscommunicator_allowednumbers" android:key="@string/key_smscommunicator_allowednumbers" android:summary="@string/smscommunicator_allowednumbers_summary" validate:testType="multiPhone" />
+        <SwitchPreference android:title="@string/smscommunicator_remotecommandsallowed" android:key="@string/key_smscommunicator_remotecommandsallowed" android:defaultValue="false" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/smscommunicator_remotebolusmindistance" android:key="@string/key_smscommunicator_remotebolusmindistance" android:summary="@string/smscommunicator_remotebolusmindistance_summary" android:defaultValue="15" validate:maxNumber="60" validate:minNumber="3" validate:testType="numericRange" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/smscommunicator_otp_pin" android:key="@string/key_smscommunicator_otp_password" android:summary="@string/smscommunicator_otp_pin_summary" android:dependency="@string/key_smscommunicator_remotecommandsallowed" validate:testType="pinStrength" />
+        <Preference android:title="@string/smscomunicator_tab_otp_label" android:key="otpsetup" android:dependency="@string/key_smscommunicator_remotecommandsallowed">
+            <intent android:action="info.nightscout.androidaps.plugins.general.smsCommunicator.activities.SmsCommunicatorOtpActivity" />
+        </Preference>
+        <SwitchPreference android:title="@string/smscommunicator_pump_ureachable" android:key="@string/key_smscommunicator_report_pump_ureachable" android:summary="@string/smscommunicator_report_pump_ureachable_summary" android:defaultValue="true" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

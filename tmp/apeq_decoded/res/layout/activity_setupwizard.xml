@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/sw_exit" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:layout_weight="1.0" android:onClick="exitPressed" android:importantForAccessibility="no" android:layout_marginStart="16.0dp" app:srcCompat="@drawable/ic_exit_to_app" />
+        <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textStyle="bold" android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/exit" android:layout_weight="1.0" android:onClick="exitPressed" android:layout_marginStart="10.0dp" />
+    </LinearLayout>
+    <TextView android:textSize="32.0sp" android:id="@id/sw_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:keepScreenOn="true" android:textAlignment="center" />
+    <ScrollView android:id="@id/sw_scrollview" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/sw_content_fields" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout android:layout_gravity="center|bottom" android:orientation="horizontal" android:background="@color/black_alpha_40" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16.0dp" android:paddingEnd="16.0dp">
+        <Button android:id="@id/previous_button" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/previous_button" android:onClick="showPreviousPage" />
+        <View android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" />
+        <Button android:id="@id/next_button" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/next_button" android:onClick="showNextPage" />
+        <Button android:id="@id/finish_button" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/setupwizard_finish" android:onClick="finishSetupWizard" />
+    </LinearLayout>
+</LinearLayout>

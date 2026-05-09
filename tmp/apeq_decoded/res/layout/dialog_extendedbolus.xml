@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_actions_startextbolus" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/virtualpump_extendedbolus_label" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/insulin_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/overview_insulin_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/insulin" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/overview_insulin_label" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/insulin_unit_shortname" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/duration_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_newnstreatment_duration_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.MinutesNumberPicker android:id="@id/duration" android:layout_width="130.0dp" android:layout_height="40.0dp" app:customContentDescription="@string/careportal_newnstreatment_duration_label" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/unit_minute_short" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <include android:id="@id/okcancel" layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center" android:orientation="horizontal" android:background="?activity_title_backgroundColor" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_bluetooth_white_48dp" />
+        <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pairing" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+    </RelativeLayout>
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Large" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:layout_marginBottom="10.0dp" android:text="@string/num1pin" android:labelFor="@id/rs_v3_pin1" />
+    <EditText android:textSize="25.0sp" android:gravity="center_horizontal" android:id="@id/rs_v3_pin1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:digits="0123456789ABCDEF" android:inputType="textCapCharacters" android:autofillHints="@string/pin1" />
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Large" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:layout_marginBottom="10.0dp" android:text="@string/num2pin" android:labelFor="@id/rs_v3_pin2" />
+    <EditText android:textSize="25.0sp" android:gravity="center_horizontal" android:id="@id/rs_v3_pin2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:digits="0123456789ABCDEF" android:inputType="textCapCharacters" android:autofillHints="@string/pin2" />
+    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Large" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:layout_marginBottom="20.0dp" android:text="@string/press_ok_on_the_pump" />
+    <include android:id="@id/okcancel" layout="@layout/okcancel" />
+</LinearLayout>

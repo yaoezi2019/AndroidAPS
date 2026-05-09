@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_action_orange_48dp" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/automation_event" android:layout_weight="1.0" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/enabled" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="vertical" android:padding="10.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageButton android:id="@id/imageButton" android:layout_width="27.0dp" android:layout_height="match_parent" android:src="@drawable/ic_danar_useropt" android:scaleX="0.7" android:scaleY="0.7" android:importantForAccessibility="no" />
+                <CheckBox android:id="@id/user_action" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/user_action" />
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText android:id="@id/inputEventTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/taskname" />
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/trigger_image" android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_centerVertical="true" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_trigger_green_48dp" />
+                <TextView android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/condition" android:layout_centerVertical="true" android:layout_marginStart="10.0dp" android:layout_toEndOf="@id/trigger_image" />
+                <TextView android:id="@id/editTrigger" android:background="?activity_title_backgroundColor" android:padding="8.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edit_short" android:layout_alignParentTop="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            <TextView android:orientation="vertical" android:id="@id/triggerDescription" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10.0dp" android:layout_marginBottom="10.0dp" />
+            <TextView android:textStyle="bold" android:id="@id/forcedTriggerDescriptionLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/preconditions" />
+            <TextView android:orientation="vertical" android:id="@id/forcedTriggerDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:layout_marginBottom="10.0dp" />
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" />
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/action_image" android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_centerVertical="true" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_action_orange_48dp" />
+                <TextView android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/action" android:layout_centerVertical="true" android:layout_marginStart="10.0dp" android:layout_toEndOf="@id/action_image" />
+                <TextView android:id="@id/addAction" android:background="?activity_title_backgroundColor" android:padding="8.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/add_short" android:layout_alignParentTop="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/actionListView" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10.0dp" android:layout_marginBottom="10.0dp" />
+            <include android:id="@id/okcancel" layout="@layout/okcancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

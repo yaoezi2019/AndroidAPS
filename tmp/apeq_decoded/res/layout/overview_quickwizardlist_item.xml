@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:id="@id/card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="4.0dp" app:cardCornerRadius="4.0dp" app:cardElevation="2.0dp" app:cardUseCompatPadding="true" app:contentPadding="2.0dp" style="@style/Widget.MaterialComponents.CardView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitStart" android:adjustViewBounds="false" android:cropToPadding="false" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_quick_wizard" />
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="true">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textStyle="bold" android:textColor="?cardObjectiveText" android:id="@id/buttonText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sample button text" android:paddingStart="10.0dp" />
+                    <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textStyle="bold" android:textColor="?cardObjectiveText" android:id="@id/carbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="36g" android:paddingStart="10.0dp" />
+                </LinearLayout>
+                <ImageView android:id="@id/device" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitStart" android:adjustViewBounds="false" android:cropToPadding="false" android:contentDescription="@string/a11y_only_on_phone" app:srcCompat="@drawable/ic_smartphone" />
+                <ImageView android:id="@id/sortHandle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitStart" android:adjustViewBounds="false" android:cropToPadding="false" android:contentDescription="@string/a11y_drag_and_drop_handle" app:srcCompat="@drawable/ic_reorder_gray_24dp" />
+                <CheckBox android:id="@id/cb_remove" android:layout_width="wrap_content" android:layout_height="24.0dp" android:minWidth="0.0dp" android:contentDescription="@string/select_for_removal" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:layout_gravity="top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/overview_editquickwizard_valid" android:paddingStart="10.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/from" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="07:45" android:paddingEnd="10.0dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" />
+                <TextView android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/to" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11:45" android:paddingStart="10.0dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

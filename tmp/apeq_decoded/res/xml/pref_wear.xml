@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/wear_settings" android:key="@string/key_wear_settings" app:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/wearcontrol_title" android:key="@string/key_wear_control" android:summary="@string/wearcontrol_summary" android:defaultValue="false" />
+        <PreferenceCategory android:title="@string/wear_wizard_settings" android:summary="@string/wear_wizard_settings_summary" android:dependency="@string/key_wear_control">
+            <CheckBoxPreference android:title="@string/treatments_wizard_bg_label" android:key="@string/key_wearwizard_bg" android:dependency="@string/key_wear_control" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/treatments_wizard_tt_label" android:key="@string/key_wearwizard_tt" android:dependency="@string/key_wearwizard_bg" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/bg_trend_label" android:key="@string/key_wearwizard_trend" android:dependency="@string/key_wear_control" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/treatments_wizard_cob_label" android:key="@string/key_wearwizard_cob" android:dependency="@string/key_wear_control" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/iob_label" android:key="@string/key_wearwizard_iob" android:dependency="@string/key_wear_control" android:defaultValue="true" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/wear_display_settings">
+            <SwitchPreference android:title="@string/wear_detailedIOB_title" android:key="@string/key_wear_detailediob" android:summary="@string/wear_detailedIOB_summary" android:defaultValue="false" />
+            <SwitchPreference android:title="@string/wear_detailed_delta_title" android:key="@string/key_wear_detailed_delta" android:summary="@string/wear_detailed_delta_summary" android:defaultValue="false" />
+            <SwitchPreference android:title="@string/wear_showbgi_title" android:key="@string/key_wear_showbgi" android:summary="@string/wear_showbgi_summary" android:defaultValue="false" />
+            <SwitchPreference android:title="@string/wear_predictions_title" android:key="wear_predictions" android:summary="@string/wear_predictions_summary" android:defaultValue="true" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/wear_general_settings">
+            <SwitchPreference android:title="@string/wear_notifysmb_title" android:key="wear_notifySMB" android:summary="@string/wear_notifysmb_summary" android:defaultValue="true" />
+        </PreferenceCategory>
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

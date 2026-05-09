@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:validate="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/maintenance_settings" android:key="@string/key_maintenance_settings" app:initialExpandedChildrenCount="0">
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:selectAllOnFocus="true" android:title="@string/maintenance_email" android:key="@string/key_maintenance_logs_email" android:defaultValue="logs@androidaps.org" android:dialogMessage="@string/maintenance_email" android:inputType="textEmailAddress" app:testType="email" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/maintenance_amount" android:key="@string/key_maintenance_logs_amount" android:defaultValue="2" android:inputType="number" app:maxNumber="10" app:minNumber="1" app:testType="numericRange" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

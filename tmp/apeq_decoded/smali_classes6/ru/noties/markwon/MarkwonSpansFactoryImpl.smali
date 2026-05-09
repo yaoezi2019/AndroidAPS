@@ -1,0 +1,118 @@
+.class Lru/noties/markwon/MarkwonSpansFactoryImpl;
+.super Ljava/lang/Object;
+.source "MarkwonSpansFactoryImpl.java"
+
+# interfaces
+.implements Lru/noties/markwon/MarkwonSpansFactory;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lru/noties/markwon/MarkwonSpansFactoryImpl$BuilderImpl;
+    }
+.end annotation
+
+
+# instance fields
+.field private final factories:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map<",
+            "Ljava/lang/Class<",
+            "+",
+            "Lorg/commonmark/node/Node;",
+            ">;",
+            "Lru/noties/markwon/SpanFactory;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method constructor <init>(Ljava/util/Map;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/Class<",
+            "+",
+            "Lorg/commonmark/node/Node;",
+            ">;",
+            "Lru/noties/markwon/SpanFactory;",
+            ">;)V"
+        }
+    .end annotation
+
+    .line 19
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 20
+    iput-object p1, p0, Lru/noties/markwon/MarkwonSpansFactoryImpl;->factories:Ljava/util/Map;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public get(Ljava/lang/Class;)Lru/noties/markwon/SpanFactory;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<N:",
+            "Lorg/commonmark/node/Node;",
+            ">(",
+            "Ljava/lang/Class<",
+            "TN;>;)",
+            "Lru/noties/markwon/SpanFactory;"
+        }
+    .end annotation
+
+    .line 26
+    iget-object v0, p0, Lru/noties/markwon/MarkwonSpansFactoryImpl;->factories:Ljava/util/Map;
+
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lru/noties/markwon/SpanFactory;
+
+    return-object p1
+.end method
+
+.method public require(Ljava/lang/Class;)Lru/noties/markwon/SpanFactory;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<N:",
+            "Lorg/commonmark/node/Node;",
+            ">(",
+            "Ljava/lang/Class<",
+            "TN;>;)",
+            "Lru/noties/markwon/SpanFactory;"
+        }
+    .end annotation
+
+    .line 32
+    invoke-virtual {p0, p1}, Lru/noties/markwon/MarkwonSpansFactoryImpl;->get(Ljava/lang/Class;)Lru/noties/markwon/SpanFactory;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    return-object v0
+
+    .line 34
+    :cond_0
+    new-instance v0, Ljava/lang/NullPointerException;
+
+    invoke-virtual {p1}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {v0, p1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method

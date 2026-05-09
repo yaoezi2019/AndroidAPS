@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:layout_above="@id/buttons_layout">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <include layout="@layout/omnipod_dash_overview_bluetooth_status" />
+            <include layout="@layout/omnipod_common_overview_pod_info" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/buttons_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <include layout="@layout/omnipod_common_overview_buttons" />
+    </LinearLayout>
+</RelativeLayout>

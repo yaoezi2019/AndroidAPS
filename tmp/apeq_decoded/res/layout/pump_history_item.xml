@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40.0dp" android:paddingStart="10.0dp" android:paddingEnd="10.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/pump_history_time" android:layout_width="70.0dp" android:layout_height="match_parent" />
+    <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/pump_history_source" android:layout_width="100.0dp" android:layout_height="match_parent" />
+    <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/pump_history_description" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="5.0dp" />
+</LinearLayout>

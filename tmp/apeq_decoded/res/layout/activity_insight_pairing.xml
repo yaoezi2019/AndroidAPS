@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/device_search_section" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textSize="20.0sp" android:gravity="center" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/searching_for_devices" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/device_list" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+    </LinearLayout>
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/please_wait_section" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/please_wait" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/code_compare_section" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textSize="20.0sp" android:gravity="center" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/code_compare" />
+        <TextView android:textSize="30.0sp" android:gravity="center" android:id="@id/code" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton android:id="@id/no" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no" style="@style/OkCancelButton.Text" />
+            <com.google.android.material.button.MaterialButton android:id="@id/yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yes" style="@style/OkCancelButton.Text" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/pairing_completed_section" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textSize="20.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pairing_completed" />
+        <com.google.android.material.button.MaterialButton android:id="@id/exit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/exit" style="@style/OkCancelButton.Text" />
+    </LinearLayout>
+</FrameLayout>

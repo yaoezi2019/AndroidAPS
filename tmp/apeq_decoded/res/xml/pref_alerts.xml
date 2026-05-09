@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/localalertsettings_title" android:key="@string/key_localalert_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/enable_missed_bg_readings_alert" android:key="@string/key_enable_missed_bg_readings_alert" android:defaultValue="false" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/nsalarm_staledatavalue_label" android:key="@string/key_missed_bg_readings_threshold_minutes" android:dependency="@string/key_enable_missed_bg_readings_alert" android:defaultValue="30" android:inputType="number" validate:maxNumber="10000" validate:minNumber="15" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/enable_pump_unreachable_alert" android:key="@string/key_enable_pump_unreachable_alert" android:defaultValue="true" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/pump_unreachable_threshold" android:key="@string/key_pump_unreachable_threshold_minutes" android:dependency="@string/key_enable_pump_unreachable_alert" android:defaultValue="30" android:inputType="number" validate:maxNumber="300" validate:minNumber="30" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/enable_carbs_req_alert" android:key="@string/key_enable_carbs_required_alert_local" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/raise_notifications_as_android_notifications" android:key="@string/key_raise_notifications_as_android_notifications" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/gradually_increase_notification_volume" android:key="@string/key_gradually_increase_notification_volume" android:defaultValue="false" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

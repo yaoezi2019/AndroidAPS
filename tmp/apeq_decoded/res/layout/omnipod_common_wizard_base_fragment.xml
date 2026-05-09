@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/omnipod_common_wizard_progress_indication" />
+    <TextView android:textAppearance="@style/OmnipodWizardTitle" android:id="@id/fragment_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginBottom="@dimen/omnipod_wizard_vertical_spacing" android:layout_weight="1.0">
+        <ViewStub android:id="@id/fragment_content" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <include android:id="@id/nav_buttons_layout" layout="@layout/omnipod_common_wizard_nav_buttons" />
+</LinearLayout>

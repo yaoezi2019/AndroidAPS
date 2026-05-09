@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@id/nav_preferences" android:orderInCategory="1" android:title="@string/nav_preferences" app:showAsAction="never" />
+    <item android:id="@id/nav_plugin_preferences" android:orderInCategory="1" android:title="@string/nav_plugin_preferences" app:showAsAction="never" />
+    <item android:id="@id/nav_treatments" android:orderInCategory="1" android:title="@string/treatments" app:showAsAction="never" />
+    <item android:id="@id/nav_historybrowser" android:orderInCategory="1" android:title="@string/nav_historybrowser" app:showAsAction="never" />
+    <item android:id="@id/nav_setupwizard" android:orderInCategory="1" android:title="@string/nav_setupwizard" app:showAsAction="never" />
+    <item android:id="@id/nav_stats" android:orderInCategory="1" android:title="@string/statistics" app:showAsAction="never" />
+    <item android:id="@id/nav_defaultprofile" android:orderInCategory="1" android:title="@string/nav_profilehelper" app:showAsAction="never" />
+    <group android:id="@id/about_exit">
+        <item android:id="@id/nav_about" android:orderInCategory="1" android:title="@string/nav_about" app:showAsAction="never" />
+        <item android:id="@id/nav_exit" android:orderInCategory="1" android:title="@string/nav_exit" app:showAsAction="never" />
+    </group>
+</menu>

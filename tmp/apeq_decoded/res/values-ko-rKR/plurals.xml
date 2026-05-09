@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="days">
+        <item quantity="other">%1$d 일</item>
+    </plurals>
+    <plurals name="duration_days">
+        <item quantity="other">%1$d 일</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="other">%1$d 시간</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="other">%1$d 시간</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="other">%1$d 분</item>
+    </plurals>
+    <plurals name="omnipod_common_days">
+        <item quantity="other">%1$d 일</item>
+    </plurals>
+    <plurals name="omnipod_common_hours">
+        <item quantity="other">%1$d 시간</item>
+    </plurals>
+    <plurals name="omnipod_common_minutes">
+        <item quantity="other">%1$d 분</item>
+    </plurals>
+    <plurals name="omnipod_common_pod_alerts">
+        <item quantity="other">Pod 경고: %1$s</item>
+    </plurals>
+</resources>

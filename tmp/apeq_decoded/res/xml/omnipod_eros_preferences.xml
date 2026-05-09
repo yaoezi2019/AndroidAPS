@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/omnipod_eros_preferences_category_riley_link" android:key="@string/key_omnipod_preference_category_rileylink_settings" validate:initialExpandedChildrenCount="0">
+        <Preference android:enabled="true" android:title="@string/rileylink_configuration" android:key="@string/key_rileylink_mac_address">
+            <intent android:action="info.nightscout.androidaps.plugins.PumpCommon.dialog.RileyLinkBLEConfigActivity" />
+        </Preference>
+        <SwitchPreference android:title="@string/orange_use_scanning_level" android:key="@string/key_orange_use_scanning" android:summary="@string/orange_use_scanning_level_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/riley_link_show_battery_level" android:key="@string/key_riley_link_show_battery_level" android:summary="@string/riley_link_show_battery_level_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_battery_change_logging_enabled" android:key="@string/key_omnipod_eros_battery_change_logging_enabled" android:dependency="@string/key_riley_link_show_battery_level" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_confirmation_beeps" android:key="@string/key_common_preferences_category_confirmation_beeps_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_bolus_beeps_enabled" android:key="@string/key_omnipod_common_bolus_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_basal_beeps_enabled" android:key="@string/key_omnipod_common_basal_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_smb_beeps_enabled" android:key="@string/key_omnipod_common_smb_beeps_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_tbr_beeps_enabled" android:key="@string/key_omnipod_common_tbr_beeps_enabled" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_alerts" android:key="@string/key_common_preferences_category_alerts_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_expiration_reminder_enabled" android:key="@string/key_omnipod_common_expiration_reminder_enabled" android:defaultValue="true" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:digits="0123456789" android:title="@string/omnipod_common_preferences_expiration_reminder_hours_before_shutdown" android:key="@string/key_omnipod_common_expiration_reminder_hours_before_shutdown" android:dependency="@string/key_omnipod_common_expiration_reminder_enabled" android:defaultValue="9" android:inputType="number" validate:maxNumber="24" validate:minNumber="2" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_low_reservoir_alert_enabled" android:key="@string/key_omnipod_common_low_reservoir_alert_enabled" android:defaultValue="true" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:digits="0123456789" android:title="@string/omnipod_common_preferences_low_reservoir_alert_units" android:key="@string/key_omnipod_common_low_reservoir_alert_units" android:dependency="@string/key_omnipod_common_low_reservoir_alert_enabled" android:defaultValue="20" android:inputType="number" validate:maxNumber="50" validate:minNumber="5" validate:testType="numericRange" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_automatically_silence_alerts" android:key="@string/key_omnipod_common_automatically_silence_alerts_enabled" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_eros_preferences_category_notifications" android:key="@string/key_omnipod_eros_preferences_category_notifications_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_notification_uncertain_tbr_sound_enabled" android:key="@string/key_omnipod_eros_notification_uncertain_tbr_sound_enabled" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_notification_uncertain_smb_sound_enabled" android:key="@string/key_omnipod_eros_notification_uncertain_smb_sound_enabled" android:defaultValue="true" />
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_notification_uncertain_bolus_sound_enabled" android:key="@string/key_omnipod_eros_notification_uncertain_bolus_sound_enabled" android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/omnipod_common_preferences_category_other" android:key="@string/key_omnipod_common_preferences_category_other_settings" validate:initialExpandedChildrenCount="0">
+        <SwitchPreference android:title="@string/omnipod_common_preferences_suspend_delivery_button_enabled" android:key="@string/key_omnipod_common_suspend_delivery_button_enabled" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_pulse_log_button_enabled" android:key="@string/key_omnipod_eros_pulse_log_button_enabled" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_eros_preferences_riley_link_stats_button_enabled" android:key="@string/key_omnipod_eros_riley_link_stats_button_enabled" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/omnipod_common_preferences_time_change_enabled" android:key="@string/key_omnipod_common_time_change_event_enabled" android:defaultValue="true" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

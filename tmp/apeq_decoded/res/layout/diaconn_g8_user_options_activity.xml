@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusable="true" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/header" android:background="?activity_title_backgroundColor" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_danar_useropt" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/diaconng8_pump_settings" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumpalarm" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <Spinner android:gravity="end" android:id="@id/beep_and_alarm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dp" />
+            <Spinner android:gravity="end" android:id="@id/alarm_intesity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dp" />
+            <View android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="1.0" />
+            <com.google.android.material.button.MaterialButton android:id="@id/save_alarm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" style="@style/OkCancelButton.Text" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="top" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_screentimeout" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <RadioGroup android:orientation="vertical" android:id="@id/pumpscreentimeout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkedButton="@id/pumpalarm_sound">
+                <RadioButton android:id="@id/pumpscreentimeout_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumpscreentimeout_10" />
+                <RadioButton android:id="@id/pumpscreentimeout_20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumpscreentimeout_20" />
+                <RadioButton android:id="@id/pumpscreentimeout_30" android:layout_width="171.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumpscreentimeout_30" />
+            </RadioGroup>
+            <View android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="1.0" />
+            <com.google.android.material.button.MaterialButton android:id="@id/save_lcd_on_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" style="@style/OkCancelButton.Text" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_language" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <RadioGroup android:orientation="vertical" android:id="@id/pumplang" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkedButton="@id/pumpalarm_sound">
+                <RadioButton android:id="@id/pumplang_english" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumplang_english" />
+                <RadioButton android:id="@id/pumplang_korean" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumplang_korean" />
+                <RadioButton android:id="@id/pumplang_chiness" android:layout_width="106.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_pumplang_chiness" />
+            </RadioGroup>
+            <View android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="1.0" />
+            <com.google.android.material.button.MaterialButton android:id="@id/save_lang" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" style="@style/OkCancelButton.Text" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <TextView android:textSize="14.0sp" android:gravity="start" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/diaconn_g8_bolus_speed" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp">
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/bolus_speed" android:layout_width="wrap_content" android:layout_height="40.0dp" android:layout_marginTop="5.0dp" android:paddingEnd="5.0dp" />
+            <View android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="1.0" />
+            <com.google.android.material.button.MaterialButton android:id="@id/save_bolus_speed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" style="@style/OkCancelButton.Text" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

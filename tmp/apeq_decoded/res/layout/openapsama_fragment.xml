@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/swipeRefresh" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.core.widget.NestedScrollView android:paddingTop="2.0dp" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_lastrun_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/lastrun" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/openapsma_inputparameters_label" android:layout_weight="2.0" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/constraints" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/constraints" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_glucosestatus_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/glucosestatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_currenttemp_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/currenttemp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_iobdata_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/iobdata" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_profile_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/profile" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_mealdata_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/mealdata" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_autosensdata_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/autosensdata" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/result" android:layout_weight="2.0" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_scriptdebugdata_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/scriptdebugdata" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/result" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/result" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/openapsma_request_label" android:layout_weight="2.0" android:textAlignment="viewEnd" android:paddingStart="0.0dp" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/request" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" android:paddingEnd="0.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

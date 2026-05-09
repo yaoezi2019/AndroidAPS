@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/pump_ble_config_currently_selected_text" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/TextAppearance.AppCompat.Title" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:id="@id/pump_ble_config_currently_selected_pump_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="10.0dp" />
+            <TextView android:textSize="12.0sp" android:id="@id/pump_ble_config_currently_selected_pump_address" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="10.0dp" />
+        </LinearLayout>
+        <Button android:id="@id/pump_ble_config_button_remove" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ble_config_remove" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/pump_ble_config_scan_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/TextAppearance.AppCompat.Title" />
+        <Button android:id="@id/pump_ble_config_scan_start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ble_config_button_scan_start" />
+        <Button android:id="@id/pump_ble_config_button_scan_stop" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ble_config_scan_stop" />
+    </LinearLayout>
+    <ListView android:id="@id/pump_ble_config_scan_device_list" android:layout_width="match_parent" android:layout_height="wrap_content" />
+</LinearLayout>

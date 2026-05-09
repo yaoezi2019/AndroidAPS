@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:validate="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/absorptionsettings_title" android:key="@string/key_absorption_settings" app:initialExpandedChildrenCount="0">
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="20" android:selectAllOnFocus="true" android:digits="0123456789.," android:title="@string/absorption_maxtime_title" android:key="@string/key_absorption_maxtime" android:defaultValue="6" android:dialogMessage="@string/absorption_maxtime_summary" android:inputType="number" app:maxNumber="10" app:minNumber="4" app:testType="numericRange" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="20" android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789" android:title="@string/openapsama_autosens_period" android:key="@string/key_openapsama_autosens_period" android:defaultValue="24" android:dialogMessage="@string/openapsama_autosens_period_summary" android:inputType="number" app:maxNumber="24" app:minNumber="4" app:testType="numericRange" />
+        <androidx.preference.PreferenceScreen android:title="@string/advancedsettings_title" android:key="absorption_aaps_advanced">
+            <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="20" android:singleLine="true" android:selectAllOnFocus="true" android:digits="0123456789.," android:title="@string/openapsama_autosens_max" android:key="@string/key_openapsama_autosens_max" android:defaultValue="1.2" android:dialogMessage="@string/openapsama_autosens_max_summary" android:inputType="numberDecimal" app:floatmaxNumber="3.0" app:floatminNumber="0.5" app:testType="floatNumericRange" />
+            <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:maxLines="20" android:singleLine="true" android:selectAllOnFocus="true" android:title="@string/openapsama_autosens_min" android:key="@string/key_openapsama_autosens_min" android:defaultValue="0.7" android:dialogMessage="@string/openapsama_autosens_min_summary" android:inputType="numberDecimal" app:floatmaxNumber="1.0" app:floatminNumber="0.1" app:testType="floatNumericRange" />
+        </androidx.preference.PreferenceScreen>
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

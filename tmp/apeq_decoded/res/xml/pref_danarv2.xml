@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:validate="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/danar_pump_settings" android:key="@string/key_danar_pump_settings" validate:initialExpandedChildrenCount="0">
+        <info.nightscout.androidaps.utils.ui.BluetoothDevicePreference android:title="@string/danar_bt_name_title" android:key="@string/key_danar_bt_name" android:dialogTitle="@string/danar_bt_name_title" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference android:title="@string/danar_password_title" android:key="@string/key_danar_password" android:inputType="numberPassword" validate:customRegexp="@string/fourdigitnumber" validate:testErrorString="@string/error_mustbe4digitnumber" validate:testType="regexp" />
+        <ListPreference android:entries="@array/danaSpeedArray" android:title="@string/bolusspeed" android:key="@string/key_danars_bolusspeed" android:defaultValue="0" android:entryValues="@array/danaSpeedValues" />
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

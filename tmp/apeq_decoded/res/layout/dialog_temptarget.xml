@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_temptarget_high" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/careportal_temporarytarget" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/temptarget_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/target_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:id="@id/temptarget" android:layout_width="130.0dp" android:layout_height="40.0dp" android:layout_marginBottom="2.0dp" app:customContentDescription="@string/target_label" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:id="@id/units" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/mgdl" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/duration_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_newnstreatment_duration_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.MinutesNumberPicker android:id="@id/duration" android:layout_width="130.0dp" android:layout_height="40.0dp" app:customContentDescription="@string/careportal_newnstreatment_duration_label" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="start" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="45.0dp" android:text="@string/unit_minute_short" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" />
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/reason" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@id/reasonList" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <info.nightscout.androidaps.utils.ui.SingleClickButton android:textColor="?tempTargetConfirmation" android:id="@id/target_cancel" android:layout_width="0.0px" android:layout_height="match_parent" android:text="@string/cancel" android:drawableTop="@drawable/ic_target_cancel" android:layout_weight="0.5" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" android:layout_marginEnd="-2.0dp" style="@style/ButtonSmallFontStyle" />
+            <info.nightscout.androidaps.utils.ui.SingleClickButton android:textColor="?carbsColor" android:id="@id/eating_soon" android:layout_width="0.0px" android:layout_height="match_parent" android:text="@string/eatingsoon" android:drawableTop="@drawable/ic_target_eatingsoon" android:layout_weight="0.5" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" android:layout_marginEnd="-2.0dp" style="@style/ButtonSmallFontStyle" />
+            <info.nightscout.androidaps.utils.ui.SingleClickButton android:textColor="?exerciseColor" android:id="@id/activity" android:layout_width="0.0px" android:layout_height="match_parent" android:text="@string/activity" android:drawableTop="@drawable/ic_target_activity" android:layout_weight="0.5" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" android:layout_marginEnd="-2.0dp" style="@style/ButtonSmallFontStyle" />
+            <info.nightscout.androidaps.utils.ui.SingleClickButton android:textColor="?lowColor" android:id="@id/hypo" android:layout_width="0.0px" android:layout_height="match_parent" android:text="@string/hypo" android:drawableTop="@drawable/ic_target_hypo" android:layout_weight="0.5" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" style="@style/ButtonSmallFontStyle" />
+        </LinearLayout>
+        <include android:id="@id/datetime" layout="@layout/datetime" />
+        <include android:id="@id/okcancel" layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

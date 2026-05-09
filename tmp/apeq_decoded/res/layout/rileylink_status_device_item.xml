@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40.0dp" android:paddingStart="15.0dp" android:paddingEnd="0.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/rileylink_device_label" android:layout_width="184.0dp" android:layout_height="match_parent" />
+    <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/rileylink_device_action" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/GrayButton" />
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="0,2,4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TableRow android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="25.0dp" android:text="@string/careportal_sensor_label" android:paddingStart="15.0dp" android:paddingEnd="2.0dp" app:drawableStartCompat="@drawable/ic_cp_age_sensor" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/sensor_age_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_age_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/sensor_age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/sensor_level_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_level_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/sensor_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="2.0dp" android:layout_marginBottom="2.0dp" android:layout_span="5" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="25.0dp" android:text="@string/careportal_insulin_label" android:paddingStart="15.0dp" android:paddingEnd="2.0dp" app:drawableStartCompat="@drawable/ic_cp_age_insulin" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/insulin_age_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_age_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/insulin_age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/insulin_level_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_level_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/reservoir_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="2.0dp" android:layout_marginBottom="2.0dp" android:layout_span="5" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/cannula_or_patch" android:layout_width="wrap_content" android:layout_height="25.0dp" android:text="@string/cannula" android:paddingStart="15.0dp" android:paddingEnd="2.0dp" app:drawableStartCompat="@drawable/ic_cp_age_cannula" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/cannula_age_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_age_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/cannula_age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/cannula_placeholder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:paddingStart="2.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+        <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="2.0dp" android:layout_marginBottom="2.0dp" android:layout_span="5" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+    <TableRow android:id="@id/battery_layout" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/pb_label" android:layout_width="wrap_content" android:layout_height="25.0dp" android:text="@string/careportal_pb_label" android:paddingStart="15.0dp" android:paddingEnd="2.0dp" app:drawableStartCompat="@drawable/ic_cp_age_battery" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/pb_age_label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/careportal_age_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/pb_age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/pb_level_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/careportal_level_label" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/battery_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="2.0dp" android:layout_marginEnd="20.0dp" />
+    </TableRow>
+</TableLayout>

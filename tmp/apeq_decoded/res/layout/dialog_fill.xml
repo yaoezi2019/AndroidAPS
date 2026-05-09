@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/StyleDialog"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/StyleDialogHeader">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="no" app:srcCompat="@drawable/ic_cp_pump_canula" />
+            <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/primefill" android:layout_centerInParent="true" android:textAlignment="center" android:layout_marginStart="10.0dp" android:layout_marginEnd="10.0dp" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/spacer" android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="vertical" android:padding="5.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/fill_catheter_change" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dp" android:text="@string/careportal_pumpsitechange" />
+            <CheckBox android:id="@id/fill_cartridge_change" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/careportal_insulincartridgechange" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:layout_gravity="center_vertical" android:id="@id/fill_label" android:padding="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/overview_insulin_label" android:width="120.0dp" />
+            <info.nightscout.androidaps.utils.ui.NumberPicker android:layout_gravity="end" android:id="@id/fill_insulinamount" android:layout_width="wrap_content" android:layout_height="40.0dp" android:paddingStart="5.0dp" android:paddingEnd="5.0dp" app:customContentDescription="@string/overview_insulin_label" />
+            <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/insulin_unit_shortname" />
+        </LinearLayout>
+        <LinearLayout android:padding="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton android:id="@id/fill_preset_button1" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1.0" style="@style/GrayButton" />
+            <com.google.android.material.button.MaterialButton android:id="@id/fill_preset_button2" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1.0" style="@style/GrayButton" />
+            <com.google.android.material.button.MaterialButton android:id="@id/fill_preset_button3" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1.0" style="@style/GrayButton" />
+        </LinearLayout>
+        <include android:id="@id/notes_layout" layout="@layout/notes" />
+        <include android:id="@id/datetime" layout="@layout/datetime" />
+        <include android:id="@id/okcancel" layout="@layout/okcancel" />
+    </LinearLayout>
+</ScrollView>

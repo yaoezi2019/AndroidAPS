@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="automation">Automatizálás</string>
+    <string name="basal">Bázis</string>
+    <string name="joda_time_android_date_time">%1$s, %2$s</string>
+    <string name="ns_wifi_ssids">WiFi SSID</string>
+    <string name="pump_time_updated">Pumpa idő frissítve</string>
+    <string name="shortday">n</string>
+    <string name="shortminute">p</string>
+</resources>

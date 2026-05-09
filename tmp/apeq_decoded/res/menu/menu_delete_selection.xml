@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_trash" android:id="@id/remove_selected" android:title="@string/remove_selected_items" android:iconTint="?colorControlNormal" app:showAsAction="ifRoom" />
+</menu>

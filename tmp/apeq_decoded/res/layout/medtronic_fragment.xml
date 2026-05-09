@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:layout_above="@id/buttons">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:id="@id/pump_status_layout" android:paddingTop="2.0dp" android:paddingBottom="5.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="center" android:id="@id/pump_status" android:background="?pumpStatusBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/initializing" android:layout_marginStart="5.0dp" android:layout_marginEnd="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/rileylink_status" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <com.joanzapata.iconify.widget.IconTextView android:textSize="14.0sp" android:id="@id/rl_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="{fa-bluetooth-b}" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:id="@id/rl_battery_view" android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/rl_battery_layout" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:id="@id/rl_battery_label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/rl_battery_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:id="@id/rl_battery_semicolon" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <com.joanzapata.iconify.widget.IconTextView android:textSize="14.0sp" android:id="@id/rl_battery_state" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/medtronic_pump_status" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <com.joanzapata.iconify.widget.IconTextView android:textSize="14.0sp" android:id="@id/pump_status_icon" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="{fa-bluetooth-b}" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <TextView android:id="@id/queue" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="content" android:textAlignment="center" />
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/battery_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <com.joanzapata.iconify.widget.IconTextView android:textSize="14.0sp" android:id="@id/pump_state_battery" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/lastconnection_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/last_connection" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/lastbolus_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/last_bolus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/basebasalrate_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/base_basal_rate" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/tempbasal_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/temp_basal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/reservoir_label" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/reservoir" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <LinearLayout android:orientation="horizontal" android:focusable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/medtronic_errors" android:layout_weight="1.5" android:textAlignment="viewEnd" android:paddingEnd="5.0dp" />
+                <TextView android:textSize="14.0sp" android:gravity="center_horizontal" android:layout_width="5.0dp" android:layout_height="wrap_content" android:text=":" android:layout_weight="0.0" android:paddingStart="2.0dp" android:paddingEnd="2.0dp" />
+                <TextView android:textSize="14.0sp" android:id="@id/errors" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:textAlignment="viewStart" android:paddingStart="5.0dp" />
+            </LinearLayout>
+            <View android:background="?android:dividerHorizontal" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="5.0dp" android:layout_marginBottom="5.0dp" android:layout_marginStart="20.0dp" android:layout_marginEnd="20.0dp" />
+            <TextView android:layout_gravity="center" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableTop="@drawable/ic_veo" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/buttons" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.google.android.material.button.MaterialButton android:id="@id/refresh" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/refresh" android:drawableTop="@drawable/ic_actions_refill" android:layout_weight="1.0" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" style="@style/ButtonSmallFontStyle" />
+        <com.google.android.material.button.MaterialButton android:id="@id/history" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pumphistory" android:drawableTop="@drawable/ic_pump_history" android:layout_weight="1.0" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" style="@style/ButtonSmallFontStyle" />
+        <com.google.android.material.button.MaterialButton android:id="@id/stats" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/riley_statistics" android:drawableTop="@drawable/ic_danarstats" android:layout_weight="1.0" android:paddingStart="0.0dp" android:paddingEnd="0.0dp" style="@style/ButtonSmallFontStyle" />
+    </LinearLayout>
+</RelativeLayout>

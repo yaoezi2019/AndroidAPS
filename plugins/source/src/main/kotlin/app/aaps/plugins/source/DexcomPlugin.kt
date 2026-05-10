@@ -1,9 +1,11 @@
 package app.aaps.plugins.source
 
 import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
@@ -17,6 +19,7 @@ import app.aaps.core.data.ue.Sources
 import app.aaps.core.interfaces.configuration.Config
 import app.aaps.core.interfaces.db.PersistenceLayer
 import app.aaps.core.interfaces.logging.AAPSLogger
+import app.aaps.core.interfaces.logging.LTag
 import app.aaps.core.interfaces.plugin.PluginDescription
 import app.aaps.core.interfaces.profile.ProfileUtil
 import app.aaps.core.interfaces.resources.ResourceHelper
@@ -170,9 +173,28 @@ class DexcomPlugin @Inject constructor(
 
     override fun requestPermissionIfNeeded() {
         if (ContextCompat.checkSelfPermission(context, PERMISSION) != PackageManager.PERMISSION_GRANTED) {
-            val intent = Intent(context, RequestDexcomPermissionActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(intent)
+            if (isAppInForeground()) {
+                val intent = Intent(context, RequestDexcomPermissionActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+            } else {
+                aapsLogger.debug(LTag.PUMP, "Skipping permission request - app is not in foreground")
+            }
+        }
+    }
+
+    private fun isAppInForeground(): Boolean {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val runningAppProcesses = activityManager.runningAppProcesses ?: return false
+            runningAppProcesses.any { process ->
+                process.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND ||
+                    process.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE
+            }
+        } else {
+            @Suppress("DEPRECATION")
+            val runningTasks = activityManager.getRunningTasks(1)
+            runningTasks.isNotEmpty() && runningTasks[0].topActivity?.packageName == context.packageName
         }
     }
 

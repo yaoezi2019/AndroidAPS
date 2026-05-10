@@ -574,3 +574,116 @@ class ApexPacketHistorySuspend : ApexPacket() {
 
     override val friendlyName: String = "APEX_PACKET__TYPE_HISTORY__SUSPEND"
 }
+
+class ApexPacketBolusSetSquareWaveBolus : ApexPacket() {
+
+    var amount: Int = 0
+    var minutes: Int = 0
+    var minutesBlood: Int = 0
+    var deviceName: String = ""
+
+    init {
+        opCode = 0x35
+        type = 0x03
+    }
+
+    override fun getRequestParams(): ByteArray {
+        val insulinValue = amount
+        return byteArrayOf(
+            (insulinValue and 0xFF).toByte(),
+            ((insulinValue shr 8) and 0xFF).toByte(),
+            ((insulinValue shr 16) and 0xFF).toByte(),
+            ((insulinValue shr 24) and 0xFF).toByte()
+        )
+    }
+
+    override fun handleMessage(data: ByteArray) {
+        if (data.size < 5) {
+            failed = true
+            return
+        }
+        setReceived()
+    }
+
+    override val friendlyName: String = "APEX_PACKET__TYPE_BOLUS__SET_SQUARE_WAVE_BOLUS"
+
+    fun with(amount: Int, minutes: Int, minutesBlood: Int, deviceName: String): ApexPacketBolusSetSquareWaveBolus {
+        this.amount = amount
+        this.minutes = minutes
+        this.minutesBlood = minutesBlood
+        this.deviceName = deviceName
+        return this
+    }
+}
+
+class ApexPacketBolusSetDualWaveBolus : ApexPacket() {
+
+    var amount: Int = 0
+    var minutes: Int = 0
+    var minutesBlood: Int = 0
+    var deviceName: String = ""
+
+    init {
+        opCode = 0x35
+        type = 0x03
+    }
+
+    override fun getRequestParams(): ByteArray {
+        val insulinValue = amount
+        return byteArrayOf(
+            (insulinValue and 0xFF).toByte(),
+            ((insulinValue shr 8) and 0xFF).toByte(),
+            ((insulinValue shr 16) and 0xFF).toByte(),
+            ((insulinValue shr 24) and 0xFF).toByte()
+        )
+    }
+
+    override fun handleMessage(data: ByteArray) {
+        if (data.size < 5) {
+            failed = true
+            return
+        }
+        setReceived()
+    }
+
+    override val friendlyName: String = "APEX_PACKET__TYPE_BOLUS__SET_DUAL_WAVE_BOLUS"
+
+    fun with(amount: Int, minutes: Int, minutesBlood: Int, deviceName: String): ApexPacketBolusSetDualWaveBolus {
+        this.amount = amount
+        this.minutes = minutes
+        this.minutesBlood = minutesBlood
+        this.deviceName = deviceName
+        return this
+    }
+}
+
+class ApexPacketPauseResumePump : ApexPacket() {
+
+    override var type: Int = 0
+    var deviceName: String = ""
+
+    init {
+        opCode = 0x35
+        type = 0x03
+    }
+
+    override fun getRequestParams(): ByteArray {
+        return byteArrayOf(type.toByte())
+    }
+
+    override fun handleMessage(data: ByteArray) {
+        if (data.size < 5) {
+            failed = true
+            return
+        }
+        setReceived()
+    }
+
+    override val friendlyName: String = "APEX_PACKET__TYPE_PAUSE_RESUME_PUMP"
+
+    fun with(type: Int, deviceName: String): ApexPacketPauseResumePump {
+        this.type = type
+        this.deviceName = deviceName
+        return this
+    }
+}

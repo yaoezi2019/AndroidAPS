@@ -10,7 +10,7 @@ open class ApexPacket() {
     var isReceived = false
         private set
     var failed = false
-    var type = BleEncryption.DANAR_PACKET__TYPE_RESPONSE
+    open var type = BleEncryption.DANAR_PACKET__TYPE_RESPONSE
         protected set
     var opCode = 0
         protected set

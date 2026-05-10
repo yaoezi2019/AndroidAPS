@@ -16,4 +16,6 @@
     <string name="approachingdailylimit">接近日剂量上限</string>
     <string name="largetimediff">时间差异过大</string>
     <string name="largetimedifftitle">时间同步问题</string>
+    <string name="settingpauseresumepump">Setting pause/resume pump</string>
+    <string name="settingextendedbolus">Setting extended bolus</string>
 </resources>

@@ -35,7 +35,10 @@ import app.aaps.core.keys.interfaces.Preferences
 import app.aaps.pump.apex.ApexPlugin
 import app.aaps.pump.apex.ApexPump
 import app.aaps.pump.apex.comm.ApexPacket
-import app.aaps.pump.dana.R
+import app.aaps.pump.apex.comm.ApexPacketBolusSetDualWaveBolus
+import app.aaps.pump.apex.comm.ApexPacketBolusSetSquareWaveBolus
+import app.aaps.pump.apex.comm.ApexPacketPauseResumePump
+import app.aaps.pump.apex.R
 import dagger.android.DaggerService
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
@@ -182,6 +185,35 @@ class ApexService : DaggerService() {
     fun cancelExtendedBolus(): Boolean {
         if (!isConnected) return false
         return false
+    }
+
+    fun pauseResumePump(mode: Int): Boolean {
+        if (!isConnected) return false
+        rxBus.send(EventPumpStatusChanged(rh.gs(R.string.settingpauseresumepump)))
+        aapsLogger.debug(LTag.PUMPCOMM, "pauseResumePump... mode=$mode")
+        val packet = ApexPacketPauseResumePump().with(mode, apexPump.serialNumber)
+        sendMessage(packet)
+        return packet.success()
+    }
+
+    fun squareWaveBolus(insulin: Double, durationInMinutes: Int, durationBloodInMinutes: Int): Boolean {
+        if (!isConnected) return false
+        rxBus.send(EventPumpStatusChanged(rh.gs(R.string.settingextendedbolus)))
+        aapsLogger.debug(LTag.PUMPCOMM, "squareWaveBolus: insulin=$insulin durationInMinutes=$durationInMinutes")
+        val insulinValue = (insulin * 100).toInt()
+        val packet = ApexPacketBolusSetSquareWaveBolus().with(insulinValue, durationInMinutes, durationBloodInMinutes, apexPump.serialNumber)
+        sendMessage(packet)
+        return packet.success()
+    }
+
+    fun dualWaveBolus(insulin: Double, durationInMinutes: Int, durationBloodInMinutes: Int): Boolean {
+        if (!isConnected) return false
+        rxBus.send(EventPumpStatusChanged(rh.gs(R.string.settingextendedbolus)))
+        aapsLogger.debug(LTag.PUMPCOMM, "dualWaveBolus: insulin=$insulin durationInMinutes=$durationInMinutes")
+        val insulinValue = (insulin * 100).toInt()
+        val packet = ApexPacketBolusSetDualWaveBolus().with(insulinValue, durationInMinutes, durationBloodInMinutes, apexPump.serialNumber)
+        sendMessage(packet)
+        return packet.success()
     }
 
     fun getPumpStatus(): String {

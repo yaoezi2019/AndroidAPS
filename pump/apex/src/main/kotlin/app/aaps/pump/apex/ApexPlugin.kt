@@ -219,13 +219,118 @@ class ApexPlugin @Inject constructor(
 
     override fun setExtendedBolus(insulin: Double, durationInMinutes: Int): PumpEnactResult {
         val result = pumpEnactResultProvider.get()
-        result.success(true)
+        if (apexService == null) {
+            aapsLogger.error("setExtendedBolus apexService is null")
+            result.success(false).comment("setExtendedBolus apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("setExtendedBolus not initialized")
+            result.success(false).comment("setExtendedBolus not initialized")
+            return result
+        }
+        val connectionOK = apexService?.squareWaveBolus(insulin, durationInMinutes, 0) == true
+        if (connectionOK) {
+            result.success(true).enacted(true).absolute(insulin).duration(durationInMinutes)
+            aapsLogger.debug(LTag.PUMP, "setExtendedBolus: OK insulin=$insulin duration=$durationInMinutes")
+        } else {
+            result.success(false).comment("setExtendedBolus failed")
+            aapsLogger.error("setExtendedBolus: Failed")
+        }
         return result
     }
 
     override fun cancelExtendedBolus(): PumpEnactResult {
         val result = pumpEnactResultProvider.get()
-        result.success(true)
+        if (apexService == null) {
+            aapsLogger.error("cancelExtendedBolus apexService is null")
+            result.success(false).comment("cancelExtendedBolus apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("cancelExtendedBolus not initialized")
+            result.success(false).comment("cancelExtendedBolus not initialized")
+            return result
+        }
+        val connectionOK = apexService?.cancelExtendedBolus() == true
+        if (connectionOK) {
+            result.success(true).enacted(true)
+            aapsLogger.debug(LTag.PUMP, "cancelExtendedBolus: OK")
+        } else {
+            result.success(false).comment("cancelExtendedBolus failed")
+            aapsLogger.error("cancelExtendedBolus: Failed")
+        }
+        return result
+    }
+
+    fun pausePump(): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        if (apexService == null) {
+            aapsLogger.error("pausePump apexService is null")
+            result.success(false).comment("pausePump apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("pausePump not initialized")
+            result.success(false).comment("pausePump not initialized")
+            return result
+        }
+        val connectionOK = apexService?.pauseResumePump(0) == true
+        if (connectionOK) {
+            apexPump.pumpSuspended = true
+            result.success(true).enacted(true)
+            aapsLogger.debug(LTag.PUMP, "pausePump: OK")
+        } else {
+            result.success(false).comment("pausePump failed")
+            aapsLogger.error("pausePump: Failed")
+        }
+        return result
+    }
+
+    fun resumePump(): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        if (apexService == null) {
+            aapsLogger.error("resumePump apexService is null")
+            result.success(false).comment("resumePump apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("resumePump not initialized")
+            result.success(false).comment("resumePump not initialized")
+            return result
+        }
+        val connectionOK = apexService?.pauseResumePump(1) == true
+        if (connectionOK) {
+            apexPump.pumpSuspended = false
+            result.success(true).enacted(true)
+            aapsLogger.debug(LTag.PUMP, "resumePump: OK")
+        } else {
+            result.success(false).comment("resumePump failed")
+            aapsLogger.error("resumePump: Failed")
+        }
+        return result
+    }
+
+    fun setDualWaveBolus(insulin: Double, durationInMinutes: Int, durationBloodInMinutes: Int): PumpEnactResult {
+        val result = pumpEnactResultProvider.get()
+        if (apexService == null) {
+            aapsLogger.error("setDualWaveBolus apexService is null")
+            result.success(false).comment("setDualWaveBolus apexService is null")
+            return result
+        }
+        if (!isInitialized()) {
+            aapsLogger.error("setDualWaveBolus not initialized")
+            result.success(false).comment("setDualWaveBolus not initialized")
+            return result
+        }
+        val connectionOK = apexService?.dualWaveBolus(insulin, durationInMinutes, durationBloodInMinutes) == true
+        if (connectionOK) {
+            result.success(true).enacted(true).absolute(insulin).duration(durationInMinutes)
+            aapsLogger.debug(LTag.PUMP, "setDualWaveBolus: OK insulin=$insulin duration=$durationInMinutes")
+        } else {
+            result.success(false).comment("setDualWaveBolus failed")
+            aapsLogger.error("setDualWaveBolus: Failed")
+        }
         return result
     }
 

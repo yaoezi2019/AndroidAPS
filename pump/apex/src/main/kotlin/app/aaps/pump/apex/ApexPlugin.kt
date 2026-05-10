@@ -109,6 +109,15 @@ class ApexPlugin @Inject constructor(
         commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.device_changed), null)
     }
 
+    fun clearPairing() {
+        mDeviceAddress = ""
+        mDeviceName = ""
+        preferences.put(ApexStringKey.ApexAddress, "")
+        preferences.put(ApexStringKey.ApexName, "")
+        preferences.put(ApexStringKey.ApexPassword, "")
+        apexPump.reset()
+    }
+
     override fun connect(reason: String) {
         aapsLogger.debug(LTag.PUMP, "Apex connect from: $reason")
         if (apexService != null && mDeviceAddress != "" && mDeviceName != "") {

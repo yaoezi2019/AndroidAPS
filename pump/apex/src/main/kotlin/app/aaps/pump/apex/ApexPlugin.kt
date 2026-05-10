@@ -9,10 +9,13 @@ import app.aaps.core.data.plugin.PluginType
 import app.aaps.core.data.pump.defs.ManufacturerType
 import app.aaps.core.data.pump.defs.PumpDescription
 import app.aaps.core.data.pump.defs.PumpType
+import app.aaps.core.interfaces.constraints.ConstraintsChecker
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
+import app.aaps.core.interfaces.notifications.Notification
 import app.aaps.core.interfaces.plugin.PluginDescription
 import app.aaps.core.interfaces.profile.Profile
+import app.aaps.core.interfaces.profile.ProfileFunction
 import app.aaps.core.interfaces.pump.DetailedBolusInfo
 import app.aaps.core.interfaces.pump.Pump
 import app.aaps.core.interfaces.pump.PumpEnactResult
@@ -25,13 +28,17 @@ import app.aaps.core.interfaces.rx.AapsSchedulers
 import app.aaps.core.interfaces.rx.bus.RxBus
 import app.aaps.core.interfaces.rx.events.EventAppExit
 import app.aaps.core.interfaces.rx.events.EventConfigBuilderChange
+import app.aaps.core.interfaces.ui.UiInteraction
 import app.aaps.core.keys.interfaces.Preferences
+import app.aaps.pump.apex.keys.ApexStringKey
 import app.aaps.pump.apex.service.ApexService
+import app.aaps.core.ui.toast.ToastUtils
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
+import kotlin.math.abs
 
 @Singleton
 class ApexPlugin @Inject constructor(
@@ -42,7 +49,11 @@ class ApexPlugin @Inject constructor(
     private val aapsSchedulers: AapsSchedulers,
     private val rxBus: RxBus,
     private val context: Context,
+    private val constraintChecker: ConstraintsChecker,
+    private val profileFunction: ProfileFunction,
     private val apexPump: ApexPump,
+    private val pumpSync: PumpSync,
+    private val uiInteraction: UiInteraction,
     private val pumpEnactResultProvider: Provider<PumpEnactResult>
 ) : PumpPluginBase(
     pluginDescription = PluginDescription()
@@ -51,12 +62,14 @@ class ApexPlugin @Inject constructor(
         .shortName(R.string.apex_pump_shortname)
         .preferencesId(PluginDescription.PREFERENCE_SCREEN)
         .description(R.string.apex_pump_description),
-    ownPreferences = emptyList(),
+    ownPreferences = listOf(ApexStringKey::class.java),
     aapsLogger, rh, preferences, commandQueue
 ), Pump {
 
     private val disposable = CompositeDisposable()
     private var apexService: ApexService? = null
+    private var mDeviceAddress = ""
+    var mDeviceName = ""
     override var pumpDescription = PumpDescription()
 
     private val mConnection = object : ServiceConnection {
@@ -85,6 +98,23 @@ class ApexPlugin @Inject constructor(
             .toObservable(EventAppExit::class.java)
             .observeOn(aapsSchedulers.io)
             .subscribe({ context.unbindService(mConnection) }, { throwable -> aapsLogger.error("Error on exit", throwable) })
+        changePump()
+    }
+
+    fun changePump() {
+        mDeviceAddress = preferences.get(ApexStringKey.ApexAddress)
+        mDeviceName = preferences.get(ApexStringKey.ApexName)
+        apexPump.serialNumber = preferences.get(ApexStringKey.ApexName)
+        apexPump.reset()
+        commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.device_changed), null)
+    }
+
+    override fun connect(reason: String) {
+        aapsLogger.debug(LTag.PUMP, "Apex connect from: $reason")
+        if (apexService != null && mDeviceAddress != "" && mDeviceName != "") {
+            val success = apexService?.connect(reason, mDeviceAddress) == true
+            if (!success) ToastUtils.errorToast(context, app.aaps.core.ui.R.string.ble_not_supported_or_not_paired)
+        }
     }
 
     override fun onStop() {
@@ -92,17 +122,13 @@ class ApexPlugin @Inject constructor(
         disposable.clear()
     }
 
-    override fun isInitialized(): Boolean = apexPump.lastConnection > 0
+    override fun isInitialized(): Boolean = apexPump.lastConnection > 0 && apexPump.maxBasal > 0 && apexPump.isRSPasswordOK
     override fun isSuspended(): Boolean = apexPump.pumpSuspended
     override fun isBusy(): Boolean = false
     override fun isConnected(): Boolean = apexService?.isConnected ?: false
     override fun isConnecting(): Boolean = apexService?.isConnecting ?: false
     override fun isHandshakeInProgress(): Boolean = false
     override fun finishHandshaking() {}
-
-    override fun connect(reason: String) {
-        // Need to implement with actual address handling
-    }
 
     override fun disconnect(reason: String) {
         apexService?.disconnect(reason)
@@ -204,8 +230,4 @@ class ApexPlugin @Inject constructor(
 
     override val isFakingTempsByExtendedBoluses: Boolean
         get() = false
-
-    override fun clearPairing() {
-        aapsLogger.debug(LTag.PUMPCOMM, "Pairing keys cleared")
-    }
 }

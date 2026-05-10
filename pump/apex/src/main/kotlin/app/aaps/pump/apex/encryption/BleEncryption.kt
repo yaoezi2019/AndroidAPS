@@ -24,7 +24,7 @@ class BleEncryption @Inject constructor() {
         setDeviceName(deviceName)
 
         when (opcode) {
-            DANAR_PACKET__OPCODE_ENCRYPTION__PUMP_CHECK -> {
+            DANAR_PACKET__OPCODE_ENCRYPTION__PUMP_CHECK          -> {
                 connectionState = 0
                 val size = 9 + 10
                 val array = UByteArray(size)
@@ -48,7 +48,7 @@ class BleEncryption @Inject constructor() {
                 return array.toByteArray()
             }
 
-            DANAR_PACKET__OPCODE_ENCRYPTION__CHECK_PASSKEY -> {
+            DANAR_PACKET__OPCODE_ENCRYPTION__CHECK_PASSKEY       -> {
                 connectionState = 0
                 val size = 9 + (bytes?.size ?: 0)
                 val array = UByteArray(size)
@@ -76,7 +76,7 @@ class BleEncryption @Inject constructor() {
                 return array.toByteArray()
             }
 
-            DANAR_PACKET__OPCODE_ENCRYPTION__PASSKEY_REQUEST -> {
+            DANAR_PACKET__OPCODE_ENCRYPTION__PASSKEY_REQUEST     -> {
                 connectionState = 0
                 val size = 9
                 val array = UByteArray(size)
@@ -97,11 +97,12 @@ class BleEncryption @Inject constructor() {
                 return array.toByteArray()
             }
 
-            DANAR_PACKET__OPCODE_ENCRYPTION__TIME_INFORMATION -> {
+            DANAR_PACKET__OPCODE_ENCRYPTION__TIME_INFORMATION    -> {
                 connectionState = 1
 
                 val byteArray = bytes?.toUByteArray()
                 if (securityVersion == EncryptionType.ENCRYPTION_BLE5) {
+                    // hide used ID little bit
                     byteArray?.let { byteArray ->
                         byteArray[1] = BLE_UNIQUE_APP_ID1 xor 0x1au
                         byteArray[2] = BLE_UNIQUE_APP_ID2 xor 0xc0u
@@ -133,7 +134,7 @@ class BleEncryption @Inject constructor() {
                 return array.toByteArray()
             }
 
-            DANAR_PACKET__OPCODE_ENCRYPTION__GET_PUMP_CHECK -> {
+            DANAR_PACKET__OPCODE_ENCRYPTION__GET_PUMP_CHECK      -> {
                 connectionState = 0
 
                 val size = 9
@@ -175,7 +176,7 @@ class BleEncryption @Inject constructor() {
                 return array.toByteArray()
             }
 
-            else -> {
+            else                                                 -> {
                 val size = 9 + (bytes?.size ?: 0)
                 val array = UByteArray(size)
 
@@ -251,7 +252,7 @@ class BleEncryption @Inject constructor() {
                 EncryptionType.ENCRYPTION_RSv3 -> connectionState = if (pairingKey == null && randomPairingKey == null) 1 else 2
                 EncryptionType.ENCRYPTION_BLE5 -> connectionState = if (ble5PairingKey == null) 1 else 2
 
-                else -> {
+                else                           -> {
                     if (size - 7 != 10) return null
                     connectionState = 2
                     for (i in 0..5) timeInfo[i] = arr[2 + i]
@@ -314,16 +315,15 @@ class BleEncryption @Inject constructor() {
         0x60u, 0x81u, 0x4fu, 0xdcu, 0x22u, 0x2au, 0x90u, 0x88u, 0x46u, 0xeeu, 0xb8u, 0x14u, 0xdeu, 0x5eu, 0x0bu, 0xdbu,
         0xe0u, 0x32u, 0x3au, 0x0au, 0x49u, 0x06u, 0x24u, 0x5cu, 0xc2u, 0xd3u, 0xacu, 0x62u, 0x91u, 0x95u, 0xe4u, 0x79u,
         0xe7u, 0xc8u, 0x37u, 0x6du, 0x8du, 0xd5u, 0x4eu, 0xa9u, 0x6cu, 0x56u, 0xf4u, 0xeau, 0x65u, 0x7au, 0xaeu, 0x08u,
-        0xbau, 0x78u, 0x25u, 0x2eu, 0x1cu, 0xa6u, 0xb4u, 0xc6u, 0xe8u, 0xddu, 0x74u, 0x1fu, 0x4bu, 0xbdu, 0x8bu, 0x8au,
-        0x70u, 0x3eu, 0xb5u, 0x66u, 0x48u, 0x03u, 0xf6u, 0x0eu, 0x61u, 0x35u, 0x57u, 0xb9u, 0x86u, 0xc1u, 0x1du, 0x9eu,
-        0xe1u, 0xf8u, 0x98u, 0x11u, 0x69u, 0xd9u, 0x8eu, 0x94u, 0x9bu, 0x1eu, 0x87u, 0xe9u, 0xceu, 0x55u, 0x28u, 0xdfu,
-        0x8cu, 0xa1u, 0x89u, 0x0du, 0xbfu, 0xe6u, 0x42u, 0x68u, 0x41u, 0x99u, 0x2du, 0x0fu, 0xb0u, 0x54u, 0xbbu, 0x16u
+        0xbau, 0x78u, 0x25u, 0x2eu, 0x1cu, 0xa6u, 0xb4u, 0xc6u, 0xe8u, 0xddu, 0x74u, 0x1fu, 0x4Bu, 0xbdu, 0x8Bu, 0x8Au,
+        0x70u, 0x3Eu, 0xb5u, 0x66u, 0x48u, 0x03u, 0xf6u, 0x0Eu, 0x61u, 0x35u, 0x57u, 0xb9u, 0x86u, 0xc1u, 0x1du, 0x9eu,
+        0xe1u, 0xf8u, 0x98u, 0x11u, 0x69u, 0xd9u, 0x8Eu, 0x94u, 0x9bu, 0x1Eu, 0x87u, 0xe9u, 0xceu, 0x55u, 0x28u, 0xdfu,
+        0x8Cu, 0xa1u, 0x89u, 0x0Du, 0xbfu, 0xe6u, 0x42u, 0x68u, 0x41u, 0x99u, 0x2du, 0x0fu, 0xb0u, 0x54u, 0xbbu, 0x16u
     )
 
     fun encryptSecondLevelPacket(bytes: ByteArray): ByteArray {
         val array = bytes.toUByteArray()
         val size = array.size
-
 
         if (securityVersion == EncryptionType.ENCRYPTION_RSv3) {
             if (array[DANAR_PACKET__START_POS] == DANAR_PACKET__START_PACKET && array[DANAR_PACKET__START_POS + 1] == DANAR_PACKET__START_PACKET) {
@@ -461,14 +461,14 @@ class BleEncryption @Inject constructor() {
                 EncryptionType.ENCRYPTION_DEFAULT ->
                     result = result xor (result.and(0xFFu).shl(3) or result.and(0xFFu).ushr(2).shl(5))
 
-                EncryptionType.ENCRYPTION_RSv3 ->
+                EncryptionType.ENCRYPTION_RSv3    ->
                     result = result xor
-                            if (connectionState == 0 || connectionState == 1)
-                                result.and(0xFFu).shl(3) or result.and(0xFFu).ushr(2).shl(5)
-                            else
-                                result.and(0xFFu).shl(5) or result.and(0xFFu).ushr(4).shl(2)
+                        if (connectionState == 0 || connectionState == 1)
+                            result.and(0xFFu).shl(3) or result.and(0xFFu).ushr(2).shl(5)
+                        else
+                            result.and(0xFFu).shl(5) or result.and(0xFFu).ushr(4).shl(2)
 
-                EncryptionType.ENCRYPTION_BLE5 ->
+                EncryptionType.ENCRYPTION_BLE5    ->
                     result = if (connectionState == 0 || connectionState == 1)
                         result xor (result.and(0xFFu).shl(3) or result.and(0xFFu).ushr(2).shl(5))
                     else
@@ -494,12 +494,12 @@ class BleEncryption @Inject constructor() {
     fun encodeByteBySn(data: UByte): UByte {
         var encodingByte: UByte = 0x00u
         for (i in 0..<10) encodingByte = encodingByte.plusUByte(deviceName[i])
-        return data xor encodingByte
+        return (data xor encodingByte)
     }
 
     fun encodeArrayByTime(data: UByteArray, time: UByteArray) {
         var encodingByte: UByte = 0x00u
-        for (i in 0..6) encodingByte = encodingByte.plusUByte(time[i])
+        for (i in 0..<6) encodingByte = encodingByte.plusUByte(time[i])
         for (i in 0..<data.size - 5) data[i + 3] = data[i + 3] xor encodingByte
     }
 
@@ -512,7 +512,7 @@ class BleEncryption @Inject constructor() {
         for (i in 0..<data.size - 5) data[i + 3] = data[i + 3] xor cfPassKey[(i + 1) % 2]
     }
 
-    private fun UByte.shr(bitCount: Int): UByte = toUInt().ushr(bitCount).toUByte()
+    private fun UByte.shr(bitCount: Int): UByte = toUInt().shr(bitCount).toUByte()
     private fun UByte.shl(bitCount: Int): UByte = toUInt().shl(bitCount).toUByte()
     private fun UByte.switchLoHi(): UByte = (shr(4) and 0x0fu) or (shl(4) and 0xf0u)
     private operator fun UByteArray.get(index: UByte): UByte = get(index.toInt())
@@ -589,6 +589,7 @@ class BleEncryption @Inject constructor() {
         const val DANAR_PACKET__OPCODE_ENCRYPTION__PASSKEY_REQUEST = 0xD1
         const val DANAR_PACKET__OPCODE_ENCRYPTION__PASSKEY_RETURN = 0xD2
 
+        // Easy Mode
         const val DANAR_PACKET__OPCODE_ENCRYPTION__GET_PUMP_CHECK = 0xF3
         const val DANAR_PACKET__OPCODE_ENCRYPTION__GET_EASY_MENU_CHECK = 0xF4
         const val DANAR_PACKET__OPCODE_NOTIFY__DELIVERY_COMPLETE = 0x01
@@ -656,9 +657,11 @@ class BleEncryption @Inject constructor() {
         const val DANAR_PACKET__OPCODE__APS_HISTORY_EVENTS = 0xC2
         const val DANAR_PACKET__OPCODE__APS_SET_EVENT_HISTORY = 0xC3
 
+        // v3 specific
         const val DANAR_PACKET__OPCODE_REVIEW__GET_PUMP_DEC_RATIO = 0x80
         const val DANAR_PACKET__OPCODE_GENERAL__GET_SHIPPING_VERSION = 0x81
 
+        // Easy Mode
         const val DANAR_PACKET__OPCODE_OPTION__GET_EASY_MENU_OPTION = 0x74
         const val DANAR_PACKET__OPCODE_OPTION__SET_EASY_MENU_OPTION = 0x75
         const val DANAR_PACKET__OPCODE_OPTION__GET_EASY_MENU_STATUS = 0x76

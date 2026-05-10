@@ -17,6 +17,7 @@ import android.os.SystemClock
 import android.util.Base64
 import androidx.core.app.ActivityCompat
 import app.aaps.core.data.time.T
+import app.aaps.core.data.ue.Sources
 import app.aaps.core.interfaces.configuration.ConfigBuilder
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
@@ -40,6 +41,8 @@ import app.aaps.pump.apex.comm.ApexPacket
 import app.aaps.pump.apex.comm.ApexPacketEtcKeepConnection
 import app.aaps.pump.apex.encryption.BleEncryption
 import app.aaps.pump.apex.encryption.EncryptionType
+import app.aaps.pump.apex.keys.ApexLongKey
+import app.aaps.pump.apex.keys.ApexStringKey
 import java.util.UUID
 import java.util.concurrent.ScheduledFuture
 import javax.inject.Inject
@@ -166,25 +169,27 @@ class ApexBLEComm @Inject internal constructor(
         if (!encryptedDataRead && encryptedCommandSent && encryption == EncryptionType.ENCRYPTION_BLE5) {
             // there was no response from pump after started encryption
             // assume pairing keys are invalid
-            val lastClearRequest = 0L // TODO: implement key storage
+            val lastClearRequest = preferences.get(ApexLongKey.LastClearKeyRequest)
             if (lastClearRequest != 0L && dateUtil.isOlderThan(lastClearRequest, 5)) {
                 ToastUtils.errorToast(context, "Invalid pairing")
                 apexPlugin.changePump()
                 removeBond()
             } else if (lastClearRequest == 0L) {
                 aapsLogger.error(LTag.PUMPBTCOMM, "Clearing pairing keys postponed")
+                preferences.put(ApexLongKey.LastClearKeyRequest, dateUtil.now())
             }
         }
         if (!encryptedDataRead && encryptedCommandSent && encryption == EncryptionType.ENCRYPTION_RSv3) {
             // there was no response from pump after started encryption
             // assume pairing keys are invalid
-            val lastClearRequest = 0L // TODO: implement key storage
+            val lastClearRequest = preferences.get(ApexLongKey.LastClearKeyRequest)
             if (lastClearRequest != 0L && dateUtil.isOlderThan(lastClearRequest, 5)) {
                 // Try to restart app
                 context.scanForActivity()?.finish()
-                configBuilder.exitApp("Apex BLE encryption failed", null, true)
+                configBuilder.exitApp("Apex BLE encryption failed", Sources.Maintenance, true)
             } else if (lastClearRequest == 0L) {
                 aapsLogger.error(LTag.PUMPBTCOMM, "Clearing pairing keys postponed")
+                preferences.put(ApexLongKey.LastClearKeyRequest, dateUtil.now())
             }
         }
         // cancel previous scheduled disconnection to prevent closing upcoming connection
@@ -206,7 +211,15 @@ class ApexBLEComm @Inject internal constructor(
     }
 
     private fun removeBond() {
-        // TODO: implement
+        preferences.getIfExists(ApexStringKey.ApexAddress)?.let { address ->
+            bluetoothAdapter?.getRemoteDevice(address)?.let { device ->
+                try {
+                    device.javaClass.getMethod("removeBond").invoke(device)
+                } catch (e: Exception) {
+                    aapsLogger.error(LTag.PUMPBTCOMM, "Removing bond has been failed. ${e.message}")
+                }
+            }
+        }
     }
 
     @SuppressLint("MissingPermission")

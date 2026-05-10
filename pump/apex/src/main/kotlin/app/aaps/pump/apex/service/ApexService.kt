@@ -102,7 +102,7 @@ class ApexService : DaggerService() {
     }
 
     fun sendMessage(message: ApexPacket) {
-        bleComm.sendMessage(message.opCode, message.getRequestParams())
+        bleComm.sendMessage(message)
     }
 
     fun readPumpStatus() {

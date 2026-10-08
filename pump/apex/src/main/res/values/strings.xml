@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ble_scan">BLE扫描</string>
+    <string name="pairing_helper">配对助手</string>
+    <string name="apex_pump">鑫丹娜泵</string>
+    <string name="apex_pump_shortname">鑫丹娜</string>
+    <string name="apex_pump_description">鑫丹娜胰岛素泵驱动 (Xindanna Insulin Pump Driver)</string>
+    <string name="scanning">正在扫描设备...</string>
+    <string name="scan_complete">扫描完成</string>
+    <string name="gettingpumpsettings">正在获取泵设置...</string>
+    <string name="gettingpumpstatus">正在获取泵状态...</string>
+    <string name="gettingbolusstatus">正在获取大剂量状态...</string>
+    <string name="gettingpumptime">正在获取泵时间...</string>
+    <string name="reading_pump_history">正在读取泵历史...</string>
+    <string name="startingbolus">正在开始大剂量...</string>
+    <string name="approachingdailylimit">接近日剂量上限</string>
+    <string name="largetimediff">时间差异过大</string>
+    <string name="largetimedifftitle">时间同步问题</string>
+    <string name="settingpauseresumepump">Setting pause/resume pump</string>
+    <string name="settingextendedbolus">Setting extended bolus</string>
+
+    <!-- Preference titles/summaries: AAPS resolves these as "<key>_title" / "<key>_summary" -->
+    <string name="apex_name_title">泵名称</string>
+    <string name="apex_name_summary">已配对的鑫丹娜泵名称</string>
+    <string name="apex_address_title">蓝牙地址</string>
+    <string name="apex_address_summary">鑫丹娜泵的蓝牙 MAC 地址</string>
+    <string name="apex_password_title">配对密码</string>
+    <string name="apex_password_summary">鑫丹娜泵的配对密码</string>
+</resources>

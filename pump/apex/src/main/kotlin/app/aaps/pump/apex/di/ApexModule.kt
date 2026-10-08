@@ -1,5 +1,6 @@
 package app.aaps.pump.apex.di
 
+import app.aaps.pump.apex.ApexFragment
 import app.aaps.pump.apex.comm.ApexPacket
 import app.aaps.pump.apex.service.ApexService
 import app.aaps.pump.apex.service.ApexBLEComm
@@ -45,6 +46,9 @@ abstract class ApexServicesModule {
 
 @Module
 abstract class ApexActivitiesModule {
+
+    @ContributesAndroidInjector
+    abstract fun contributesApexFragmentInjector(): ApexFragment
 }
 
 @Singleton

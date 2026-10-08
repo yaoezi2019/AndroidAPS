@@ -26,4 +26,18 @@
     <string name="apex_address_summary">鑫丹娜泵的蓝牙 MAC 地址</string>
     <string name="apex_password_title">配对密码</string>
     <string name="apex_password_summary">鑫丹娜泵的配对密码</string>
+
+    <!-- Pump status screen -->
+    <string name="apex_serial">序列号</string>
+    <string name="apex_bt_status">蓝牙状态</string>
+    <string name="apex_battery">电池</string>
+    <string name="apex_last_connection">上次连接</string>
+    <string name="apex_reservoir">剩余药量</string>
+    <string name="apex_daily_total">日已输注量</string>
+    <string name="apex_basal">基础率</string>
+    <string name="apex_temp_basal">临时基础率</string>
+    <string name="apex_max_basal">基础率最大值</string>
+    <string name="apex_max_bolus">大剂量最大值</string>
+    <string name="apex_low_reservoir">低药量报警值</string>
+    <string name="apex_firmware">固件</string>
 </resources>

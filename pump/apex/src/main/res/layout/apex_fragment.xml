@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/serialValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/btValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/batteryValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/lastConnectionValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/reservoirValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/dailyTotalValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/basalValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/tempBasalValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/maxBasalValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/maxBolusValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/lowReservoirValue"
+            style="@style/ApexStatusRow" />
+
+        <TextView
+            android:id="@+id/firmwareValue"
+            style="@style/ApexStatusRow" />
+
+    </LinearLayout>
+</ScrollView>

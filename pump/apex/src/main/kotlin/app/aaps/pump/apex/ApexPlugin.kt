@@ -9,6 +9,7 @@ import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.os.IBinder
 import androidx.core.app.ActivityCompat
+import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceScreen
@@ -37,6 +38,7 @@ import app.aaps.core.interfaces.rx.events.EventAppExit
 import app.aaps.core.interfaces.rx.events.EventConfigBuilderChange
 import app.aaps.core.interfaces.ui.UiInteraction
 import app.aaps.core.keys.interfaces.Preferences
+import app.aaps.pump.apex.activities.BLEScanActivity
 import app.aaps.pump.apex.keys.ApexStringKey
 import app.aaps.pump.apex.service.ApexService
 import app.aaps.core.ui.toast.ToastUtils
@@ -101,7 +103,7 @@ class ApexPlugin @Inject constructor(
         disposable += rxBus
             .toObservable(EventConfigBuilderChange::class.java)
             .observeOn(aapsSchedulers.io)
-            .subscribe { apexPump.reset() }
+            .subscribe { changePump() }
 
         disposable += rxBus
             .toObservable(EventAppExit::class.java)
@@ -157,6 +159,17 @@ class ApexPlugin @Inject constructor(
             key = "apex_pump_settings"
             title = rh.gs(R.string.apex_pump)
             initialExpandedChildrenCount = 0
+            addPreference(
+                Preference(context).apply {
+                    key = "apex_scan"
+                    title = rh.gs(R.string.ble_scan)
+                    summary = mDeviceName.ifEmpty { rh.gs(R.string.apex_name_summary) }
+                    setOnPreferenceClickListener {
+                        context.startActivity(Intent(context, BLEScanActivity::class.java))
+                        true
+                    }
+                }
+            )
             addPreference(
                 AdaptiveListPreference(
                     ctx = context,

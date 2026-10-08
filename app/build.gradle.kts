@@ -138,6 +138,15 @@ android {
 
     useLibrary("org.apache.http.legacy")
 
+    // Debug builds get a ".dev" applicationId suffix so they can coexist with
+    // an official AAPS release installed on the same device.
+    // e.g. info.nightscout.androidaps -> info.nightscout.androidaps.dev
+    buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".dev"
+        }
+    }
+
     //Deleting it causes a binding error
     buildFeatures {
         dataBinding = true
